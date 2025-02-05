@@ -1,0 +1,23 @@
+import 'package:get/get.dart';
+import '../controllers/trainer_edit_profile_controller.dart';
+import '../controllers/trainer_profile_controller.dart';
+
+class TrainerProfileBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(TrainerProfileController());
+    Get.lazyPut(() => TrainerProfileController());
+    Get.put(TrainerEditProfileController());
+    Get.lazyPut(() => TrainerEditProfileController());
+
+  }
+}
+
+class TrainerEditProfileBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.put(TrainerEditProfileController());
+    Get.lazyPut(() => TrainerEditProfileController());
+
+  }
+}
