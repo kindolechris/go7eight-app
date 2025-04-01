@@ -33,6 +33,7 @@ class StudentRootView extends GetView<RootController> {
           : Theme.of(context).brightness == Brightness.light
           ? AppColor.white
           : AppColor.black,
+      systemNavigationBarIconBrightness: Theme.of(context).brightness == Brightness.light ? Brightness.dark : Brightness.light,
       statusBarIconBrightness: Brightness.light,
       child: SafeArea(
         top: false,
@@ -90,7 +91,11 @@ class StudentRootView extends GetView<RootController> {
                 unselectedItemColor: AppColor.grey,
                 iconSize: 30,
                 onTap: (index) {
-                  controller.selectedIndex.value = index;
+                  if (index == 2) {
+                    controller.pickImages();
+                  }else{
+                    controller.selectedIndex.value = index;
+                  }
                 },
                 elevation: 0,
                 backgroundColor: Theme.of(context).brightness == Brightness.light

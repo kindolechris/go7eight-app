@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:go7eight/src/core/constants/app_api_repsonse_code.dart';
 import 'package:go7eight/src/core/constants/app_constants.dart';
+import 'package:go7eight/src/core/reusableComponents/app_custom_toast.dart';
 import 'package:go7eight/src/modules/auth/views/registration/registration_google_basic_info_view.dart';
 import 'package:go7eight/src/modules/auth/views/registration/registration_nickname_password_view.dart';
 
@@ -154,24 +155,40 @@ class RegistrationController extends GetxController{
         }else{
           loginController.switchToPhone();
         }
-        var success = await loginController.loginClick(storageInstance.read("identifier") == "email" ? storageInstance.read("email") : storageInstance.read("phone"), passwordTextController.text);
+        var success = await loginController.loginClick(storageInstance.read("identifier") == "email" ? newUser.email : newUser.phone, newUser.password);
         if(success){
-          SnackBarX.showSuccess(title: "Congratulations", message: "Your account was registered successfully.");
+          CustomToast.showToast(
+            "Your account was registered successfully.",
+            duration: const Duration(seconds: 5), // How long it stays visible
+            animationDuration: const Duration(milliseconds: 400), // Slower animation
+          );
           Get.offAll(()=>StudentRootView(),binding: RootBinding(),duration: const Duration(milliseconds: 400),transition: Transition.fadeIn);
           loginController.setLoading(false);
         }else{
-          SnackBarX.showSuccess(title: "Congratulations", message: "Your account was registered successfully,you may proceed to login");
+          CustomToast.showToast(
+            "Your account was registered successfully,you may proceed to login",
+            duration: const Duration(seconds: 5), // How long it stays visible
+            animationDuration: const Duration(milliseconds: 400), // Slower animation
+          );
           Get.offAll(()=> const LoginView(),binding: AuthBinding(),duration: const Duration(milliseconds: 400),transition: Transition.fadeIn);
           loginController.setLoading(false);
         }
        await Future.delayed(Duration(milliseconds: 900));
        setLoading(false);
       }else{
-        SnackBarX.showError(title: "Error", message: response.message.toString());
+        CustomToast.showToast(
+          response.message.toString(),
+          duration: const Duration(seconds: 5), // How long it stays visible
+          animationDuration: const Duration(milliseconds: 400), // Slower animation
+        );
         setLoading(false);
       }
     }catch(ex){
-      SnackBarX.showError(title: "Error", message: ex.toString());
+     CustomToast.showToast(
+       ex.toString(),
+       duration: const Duration(seconds: 5), // How long it stays visible
+       animationDuration: const Duration(milliseconds: 400), // Slower animation
+     );
       setLoading(false);
     }
   }
@@ -204,9 +221,11 @@ class RegistrationController extends GetxController{
       setLoading(false);
       return false;
     }else if(response.code == 401){
-      SnackBarX.showError(
-          title: "login_validation_snack_title",
-          message: response.message);
+      CustomToast.showToast(
+        response.message,
+        duration: const Duration(seconds: 5), // How long it stays visible
+        animationDuration: const Duration(milliseconds: 400), // Slower animation
+      );
       setLoading(false);
       return false;
     }
@@ -218,7 +237,11 @@ class RegistrationController extends GetxController{
     try{
       setLoading(false);
     }catch(ex){
-      SnackBarX.showError(title: "Error", message: ex.toString());
+      CustomToast.showToast(
+        ex.toString(),
+        duration: const Duration(seconds: 5), // How long it stays visible
+        animationDuration: const Duration(milliseconds: 400), // Slower animation
+      );
       setLoading(false);
     }
   }
@@ -254,7 +277,11 @@ class RegistrationController extends GetxController{
       Get.off(()=> RegistrationBasicInfoView(),binding: AuthBinding(),duration: const Duration(milliseconds: 400),transition: Transition.fadeIn);
     }else{
       setLoading(false);
-      SnackBarX.showError(title: "Error", message: response.message);
+      CustomToast.showToast(
+        response.message,
+        duration: const Duration(seconds: 5), // How long it stays visible
+        animationDuration: const Duration(milliseconds: 400), // Slower animation
+      );
     }
   }
 
@@ -267,7 +294,11 @@ class RegistrationController extends GetxController{
       Get.off(()=> RegistrationBasicInfoView(),binding: AuthBinding(),duration: const Duration(milliseconds: 400),transition: Transition.fadeIn);
     }else{
       setLoading(false);
-      SnackBarX.showError(title: "Error", message: response.message);
+      CustomToast.showToast(
+        response.message,
+        duration: const Duration(seconds: 5), // How long it stays visible
+        animationDuration: const Duration(milliseconds: 400), // Slower animation
+      );
     }
   }
 

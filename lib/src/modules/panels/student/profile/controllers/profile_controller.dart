@@ -149,8 +149,14 @@ class ProfileController extends GetxController {
   }
 
   Future<void> logoutPressed() async {
-    storageInstance.remove("isLogged");
-    loginController.signOutGoogle();
+    storageInstance.remove("accessToken");
+    storageInstance.remove("expiresAt");
+    storageInstance.remove("customer");
+    try{
+      loginController.signOutGoogle();
+    }catch(ex){
+      print(ex.toString());
+    }
     Get.offAll(() => const LoginOrSignUpView(),
         binding: AuthBinding(),
         duration: const Duration(milliseconds: 500),

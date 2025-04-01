@@ -1,6 +1,6 @@
+import 'package:flutter/services.dart';
 import 'package:go7eight/src/core/app_export.dart';
 import 'package:go7eight/src/core/reusableComponents/app_image_rounded_container.dart';
-import 'package:go7eight/src/data/dummy_dataset/trainer_image_data.dart';
 import 'package:go7eight/src/modules/panels/student/cart/bindings/cart_binding.dart';
 import 'package:go7eight/src/modules/panels/student/cart/views/cart_view.dart';
 import 'package:go7eight/src/modules/panels/student/profile/bindings/profile_binding.dart';
@@ -13,42 +13,61 @@ import '../../controllers/home_controller.dart';
 class HomeAppBar extends GetView<HomeController> implements PreferredSizeWidget {
   final bool? showSearchButton;
   final bool? showCartButton;
+  final bool? showNotificationButton;
 
-  const HomeAppBar({super.key, this.showSearchButton, this.showCartButton});
+  const HomeAppBar({
+    super.key,
+    this.showSearchButton,
+    this.showCartButton,
+    this.showNotificationButton = true
+  });
+
   @override
   Widget build(BuildContext context) {
-    return PreferredSize(
-      preferredSize: Size(Get.width, 66),
-      child: Container(
-        margin: EdgeInsets.only(top: AppRatioSize.getRatioHeight() / 120),
-        child: AppBar(
-          backgroundColor: Theme.of(context).brightness == Brightness.light
-              ? AppColor.white
-              : AppColor.black,
-          elevation: 0.0,
-          primary: true,
-          centerTitle: false,
-          automaticallyImplyLeading: false,
-          actions: [
-            showCartButton == false ? Container() : _appBarActionCart(context),
-            (showCartButton != false || showSearchButton != false)
-                ? Container(
-                    width: AppRatioSize.getRatioWidth() / 48,
-                  )
-                : Container(),
-            showSearchButton == false
-                ? Container()
-                : _appBarActionSearch(context),
-            (showCartButton != false || showSearchButton != false)
-                ? Container(
-                    width: AppRatioSize.getRatioWidth() / 24,
-                  )
-                : Container()
-          ],
-          title: _customappBarTitle(context),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle(
+          statusBarColor: Colors.black,
+          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: Brightness.dark,
         ),
-      ),
-    );
+        child: PreferredSize(
+          preferredSize: Size(Get.width, 66),
+          child: Container(
+            color: AppColor.white,
+            margin: EdgeInsets.only(top: AppRatioSize.getRatioHeight() / 120),
+            child: AppBar(
+              backgroundColor: Theme.of(context).brightness == Brightness.light
+                  ? AppColor.white
+                  : AppColor.black,
+              elevation: 0.0,
+              primary: true,
+              centerTitle: false,
+              automaticallyImplyLeading: false,
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                  color: AppColor.white, // Match this with backgroundColor
+                ),
+              ),
+              actions: [
+                showCartButton == false ? Container() : _appBarActionCart(context),
+                (showCartButton != false)
+                    ? Container(
+                  width: AppRatioSize.getRatioWidth() / 48,
+                )
+                    : Container(),
+                showNotificationButton == false
+                    ? Container()
+                    : _appBarActionNotification(context),
+                (showCartButton != false || showNotificationButton != false)
+                    ? Container(
+                  width: AppRatioSize.getRatioWidth() / 24,
+                )
+                    : Container()
+              ],
+              title: _buildTitleWithUserAndSearch(context),
+            ),
+          ),
+        ));
   }
 
   @override
@@ -56,9 +75,10 @@ class HomeAppBar extends GetView<HomeController> implements PreferredSizeWidget 
     return Size(Get.width, 66);
   }
 
-  Widget _customappBarTitle(BuildContext context) {
+  Widget _buildTitleWithUserAndSearch(BuildContext context) {
     return Row(
       children: [
+        // User profile image
         GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
@@ -68,49 +88,58 @@ class HomeAppBar extends GetView<HomeController> implements PreferredSizeWidget 
                 duration: const Duration(milliseconds: 550));
           },
           child: Hero(
-            tag: "profileImage_user",
-            child: AppLocalImage(
+              tag: "profileImage_user",
+              child: AppLocalImage(
                 width: AppRatioSize.getRatioWidth() / 10,
                 height: AppRatioSize.getRatioWidth() / 10,
                 showBoarder: true,
                 imagePath: AppIcon.userIcon,
-            )
+              )
           ),
         ),
-        const SizedBox(
-          width: 12,
-        ),
-        Expanded(child: _appBarProfileName(context))
-      ],
-    );
-  }
+        const SizedBox(width: 12),
 
-  Widget _appBarProfileName(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Hello ${controller.customer.value!.firstName}".tr,
-          textAlign: TextAlign.left,
-          style: TextStyleX.subHeading2(context).copyWith(
-            color: AppColor.lightBlueGrey,
+        // Search field
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              Get.to(() => const FitnofySearchVew(),
+                  binding: SearchBinding(),
+                  duration: const Duration(milliseconds: 500),
+                  transition: Transition.fadeIn);
+            },
+            child: Container(
+              height: 40,
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(20),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.search,
+                    color: Colors.grey[600],
+                    size: 18,
+                  ),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      "Search product, service, account",
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                        fontSize: 14,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
-        Text("welcome_to_app".tr,
-            textAlign: TextAlign.left, style: TextStyleX.header3(context)),
       ],
-    );
-  }
-
-  Widget _appBarActionSearch(BuildContext context) {
-    return Container(
-      child: _appBarActionButton(context, iconData: Icons.search_rounded,
-          action: () {
-        Get.to(() => const FitnofySearchVew(),
-            binding: SearchBinding(),
-            duration: const Duration(milliseconds: 500),
-            transition: Transition.fadeIn);
-      }, heroTag: "search_container"),
     );
   }
 
@@ -123,10 +152,21 @@ class HomeAppBar extends GetView<HomeController> implements PreferredSizeWidget 
     }, iconData: Icons.shopping_cart_outlined, heroTag: "");
   }
 
+  Widget _appBarActionNotification(BuildContext context) {
+    return _appBarActionButton(context, action: () {
+      // Add navigation to notification screen here
+      // For example:
+      // Get.to(() => const NotificationView(),
+      //    binding: NotificationBinding(),
+      //    duration: const Duration(milliseconds: 500),
+      //    transition: Transition.fadeIn);
+    }, iconData: Icons.notifications_none_outlined, heroTag: "notification_container");
+  }
+
   _appBarActionButton(BuildContext context,
       {required IconData iconData,
-      required Function() action,
-      required String heroTag}) {
+        required Function() action,
+        required String heroTag}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,

@@ -26,7 +26,6 @@ class SnackBarX{
         snackPosition: Platform.isIOS?SnackPosition.TOP:SnackPosition.BOTTOM);
 
   }
-
   static showWarning({required String title,required String message,Color? backgroundColor,Color? textColor}){
     Get.closeCurrentSnackbar();
     Get.snackbar(title.tr, message.tr,

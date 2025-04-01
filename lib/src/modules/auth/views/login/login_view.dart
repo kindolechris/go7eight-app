@@ -17,6 +17,7 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
+    print(storageInstance.read("accessToken"));
     return AppStatusBar(
       statusBarColor: Theme.of(context).brightness == Brightness.light
           ? AppColor.offWhite
@@ -122,7 +123,7 @@ class LoginView extends GetView<LoginController> {
   }
 
   Widget _buildInputFields(BuildContext context) {
-    return Column(// Key for AnimatedSwitcher
+    return Column(
       children: [
          AppRatioSpaces.verticalSectionSpaceM(),
          Visibility(

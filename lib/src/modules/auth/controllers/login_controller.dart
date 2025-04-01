@@ -4,6 +4,7 @@ import 'dart:ffi';
 
 import 'package:flutter/services.dart';
 import 'package:go7eight/src/core/constants/app_api_repsonse_code.dart';
+import 'package:go7eight/src/core/reusableComponents/app_custom_toast.dart';
 import 'package:go7eight/src/data/dataSource/remote/google_auth_service.dart';
 import 'package:go7eight/src/modules/auth/views/registration/registration_email_otp_verification_view.dart';
 import 'package:go7eight/src/modules/auth/views/registration/registration_google_basic_info_view.dart';
@@ -65,6 +66,8 @@ class LoginController extends GetxController{
     final GoogleSignIn _googleSignIn = GoogleSignIn(
       scopes: ['email', 'profile'],
     );
+
+
 
 
     Future<void> canDeviceUseBiometric() async {
@@ -176,9 +179,14 @@ class LoginController extends GetxController{
         setLoading(false);
         return false;
       }else if(response.code == 401){
-        SnackBarX.showError(
-            title: "Failure",
-            message: response.message);
+        // SnackBarX.showError(
+        //     title: "Failure",
+        //     message: response.message);
+        CustomToast.showToast(
+          response.message,
+          duration: const Duration(seconds: 5), // How long it stays visible
+          animationDuration: const Duration(milliseconds: 400), // Slower animation
+        );
         setLoading(false);
         return false;
       }
@@ -201,18 +209,32 @@ class LoginController extends GetxController{
           googleAuthToken.value = googleAuth.accessToken!;
           loginWithGoogle(googleAuth.accessToken!);
         }else{
-          SnackBarX.showWarning(
-              title: "Info",
-              message: response.message);
+          CustomToast.showToast(
+            response.message,
+            duration: const Duration(seconds: 5), // How long it stays visible
+            animationDuration: const Duration(milliseconds: 400), // Slower animation
+          );
           isLoading.value = false;
+          try{
+            signOutGoogle();
+          }catch(ex){
+            print(ex.toString());
+          }
         }
       }
 
       if(response.code == AppResponseCode.FAILURE){
-        SnackBarX.showWarning(
-            title: "Info",
-            message: response.message);
+        CustomToast.showToast(
+          response.message,
+          duration: const Duration(seconds: 5), // How long it stays visible
+          animationDuration: const Duration(milliseconds: 400), // Slower animation
+        );
         isLoading.value = false;
+        try{
+          signOutGoogle();
+        }catch(ex){
+          print(ex.toString());
+        }
       }
 
       if(response.code == AppResponseCode.RECORD_DOES_NOT_EXISTS){
@@ -267,6 +289,11 @@ class LoginController extends GetxController{
     Future<void> signUpClick() async {
       storageInstance.write("identifier", inputType.value == LoginInputType.email ? "email" : "phone");
       setLoading(true);
+      // CustomToast.showToast(
+      //   "Logging in soon..",
+      //   duration: const Duration(seconds: 2), // How long it stays visible
+      //   animationDuration: const Duration(milliseconds: 500), // Slower animation
+      // );
       var response = await authApiService.checkUser(storageInstance.read("identifier") == "email" ?
       emailTextController.value.text :
       phoneTextController.value.text.startsWith("0") ? selectedDialCode+phoneTextController.value.text.substring(1) :
@@ -283,9 +310,11 @@ class LoginController extends GetxController{
             Get.to(()=> const RegistrationPhoneOtpVerification(),binding: AuthBinding(),duration: const Duration(milliseconds: 400),transition: Transition.fadeIn);
           }
         }else{
-          SnackBarX.showError(
-              title: "Failure",
-              message: response.message);
+          CustomToast.showToast(
+            response.message,
+            duration: const Duration(seconds: 5), // How long it stays visible
+            animationDuration: const Duration(milliseconds: 400), // Slower animation
+          );
         }
        setLoading(false);
     }
@@ -301,7 +330,7 @@ class LoginController extends GetxController{
         var payload = {
           "username" : username,
           "password" : password,
-          "grant_type" : "password"
+          "grant_type" : "password",
         };
         var response = await authApiService.loginUser(payload);
         if(response.code == AppResponseCode.SUCCESS){
@@ -318,26 +347,34 @@ class LoginController extends GetxController{
           setLoading(false);
           return false;
         }else if(response.code == 401){
-          SnackBarX.showError(
-              title: "Failure",
-              message: response.message);
+          CustomToast.showToast(
+            response.message,
+            duration: const Duration(seconds: 5), // How long it stays visible
+            animationDuration: const Duration(milliseconds: 400), // Slower animation
+          );
           setLoading(false);
           return false;
         }else{
-          SnackBarX.showError(
-              title: "Failure",
-              message: response.message);
+          CustomToast.showToast(
+            response.message,
+            duration: const Duration(seconds: 5), // How long it stays visible
+            animationDuration: const Duration(milliseconds: 400), // Slower animation
+          );
           setLoading(false);
           return false;
         }
      }catch(ex) {
-        SnackBarX.showError(
-            title: "Failure",
-            message: ex.toString());
+        CustomToast.showToast(
+          ex.toString(),
+          duration: const Duration(seconds: 5), // How long it stays visible
+          animationDuration: const Duration(milliseconds: 400), // Slower animation
+        );
         setLoading(false);
         return false;
       }
     }
+
+
     void forgotPasswordClick() {
         Get.to(()=>const ForgotPasswordView(),binding: AuthBinding(),duration: const Duration(milliseconds: 400),transition: Transition.fadeIn);
     }

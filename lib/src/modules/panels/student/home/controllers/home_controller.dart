@@ -45,6 +45,9 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   RxList<SessionModel> allSessions = <SessionModel>[].obs;
   ScrollController scrollController = ScrollController();
   List<AdvertisementModel> advertisements = getAdvertisementListData();
+  final RxDouble appBarOffset = 0.0.obs;
+  double? lastScrollOffset = 0.0;
+  RxBool? appBarVisible;
 
   final Rx<Customer> customer = Rx<Customer>(Customer());
 
@@ -71,6 +74,8 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   void onInit() {
     newsTypeTabController = TabController(vsync: this, length: 3);
     categoryTypeTabController = TabController(vsync: this, length: 5);
+    appBarVisible = true.obs;
+    lastScrollOffset = 0.0;
     initiateData();
     super.onInit();
     loadUsers();

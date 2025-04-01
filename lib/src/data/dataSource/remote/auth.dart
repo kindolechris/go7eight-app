@@ -1,8 +1,5 @@
 import 'dart:convert';
 
-import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/enums.dart';
-import 'package:appwrite/models.dart';
 import 'package:go7eight/src/data/config/http_client.dart';
 import 'package:go7eight/src/data/dataSource/remote/response_object.dart';
 
@@ -35,7 +32,7 @@ class AuthApiService {
   Future<ResponseObject> checkUser(email,identifier,authenticationMethod) async {
     try {
       final response = await httpClient.get(
-          'api/customers',
+          'api/users',
           useToken: false,
           queryParameters: {
             "username" : email,
@@ -57,7 +54,7 @@ class AuthApiService {
   Future<ResponseObject> verifyPhone(phone,otp) async {
     try {
       final response = await httpClient.post(
-          'api/customers/mobile-verification/complete',
+          'api/users/mobile-verification/complete',
           useToken: false,
           formUrlEncoded: false,
           data: {
@@ -79,7 +76,7 @@ class AuthApiService {
   Future<ResponseObject> verifyEmail(email,otp) async {
     try {
       final response = await httpClient.post(
-          'api/customers/email-verification/complete',
+          'api/users/email-verification/complete',
           useToken: false,
           formUrlEncoded: false,
           data: {
@@ -100,15 +97,16 @@ class AuthApiService {
 
   Future<ResponseObject> register(Customer customer) async {
     try {
+
       final response = await httpClient.post(
-          'api/customers',
+          'api/users',
           useToken: false,
           formUrlEncoded: false,
           data: {
             "firstName": customer.firstName,
             "lastName": customer.lastName,
             "country": customer.country,
-            "phoneNumber": customer.phone,
+            //"phoneNumber": customer.phone,
             "dob": customer.dateOfBirth,
             "username": customer.username,
             "nickname": customer.nickName,
@@ -131,12 +129,14 @@ class AuthApiService {
   Future<ResponseObject> getCustomerLogged() async {
     try {
       final response = await httpClient.get(
-          'customers/logged',
+          'users/logged',
           useToken: true,
       );
       if(response.statusCode == 200){
         final jsonResponse = jsonDecode(response.body);
         return ResponseObject(code: jsonResponse['code'], data: jsonResponse['data'], message: jsonResponse['message']);
+      }else if(response.statusCode == 401){
+        return ResponseObject(code: response.statusCode, message: response.reasonPhrase);
       }else{
         return ResponseObject(code: response.statusCode, message: response.reasonPhrase);
       }

@@ -20,7 +20,8 @@ class AppColor {
   static const Color gradientPrimary =Color(0xFF0C122A);
 
   static const Color blue = Color(0xFF090FAC);
-  static const Color white = Color(0xFFFFFFFF); 
+  static const Color primaryBlue = Color(0xFF2B32E7);
+  static const Color white = Color(0xFFFFFFFF);
   static const Color offWhite = Color(0xFFF1F1F1);
 
   static const Color red = Color(0xFFF82814);
@@ -38,6 +39,7 @@ class AppColor {
   static const Color lightGreen = Color(0xFFEEF4ED);
   static const Color darkGrey = Color(0xFF5E5E5E);
   static const Color grey = Color(0xFF909090);
+  static const Color buyBtnColor = Color(0xFF353636);
   static const Color menuGrey = Color(0xFFC4C4C4);
   static const Color boarderBlueGrey=Color(0xFFDFE5FF);
 

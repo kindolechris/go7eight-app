@@ -73,6 +73,7 @@ dependencies:
   phone_numbers_parser: ^9.0.3
   local_auth: ^2.3.0
   google_sign_in: ^6.1.0
+  timeago: ^3.4.0
 
 
 dev_dependencies:

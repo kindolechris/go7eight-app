@@ -2,10 +2,12 @@ class AppIcon {
   static const String learnerIcon = "assets/icons/learner.png";
   static const String likeRed = "assets/icons/like_red.png";
   static const String comment = "assets/icons/comment.png";
+  static const String outlineComment = "assets/icons/outline_comment.png";
   static const String trainerIcon = "assets/icons/trainer.png";
   static const String nutritionistIcon = "assets/icons/nutritionist.png";
   static const String googleIcon = "assets/icons/google.png";
   static const String userIcon = "assets/icons/user.png"; 
+  static const String shareIcon = "assets/icons/share.png";
   static const String facebookIcon = "assets/icons/facebook.png";
   static const String emailIcon = "assets/icons/email.png";
   static const String phoneIcon = "assets/icons/phone.png";
