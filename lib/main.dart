@@ -1,37 +1,23 @@
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:go7eight/src/localization/app_localization.dart';
-import 'package:go7eight/src/modules/global/controllers/global_controller.dart';
-import 'package:go7eight/src/modules/splash/bindings/splash_binding.dart';
-import 'package:go7eight/src/routes/app_pages.dart';
-import 'package:go7eight/src/theme/controller/theme_controller.dart';
-import 'package:go7eight/src/theme/theme_data/theme.dart';
-import 'package:hive_flutter/adapters.dart';
+import 'package:prime_social_media_flutter_ui_kit/config/app_color.dart';
+import 'package:prime_social_media_flutter_ui_kit/config/app_size.dart';
+import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
+import 'package:prime_social_media_flutter_ui_kit/translation/app_translation.dart';
+import 'package:prime_social_media_flutter_ui_kit/views/splash/splash_view.dart';
 
-import 'src/routes/app_routes.dart';
-import 'dart:io' show Platform;
-
-final storageInstance = GetStorage();
-final globalController = Get.put(GlobalController());
-
+import 'controller/translation_controller.dart';
+import 'routes/app_routes.dart';
 
 void main() async {
-  await GetStorage.init();
-  //useWindowsSpecificFunctionality();
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  await Hive.openBox('settings');
+  await initTranslation();
+  runApp(const MyApp());
+}
 
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]).then((value) {
-    runApp(const MyApp());
-  });
+Future<void> initTranslation() async {
+  await Get.putAsync(() async => AppTranslations());
 }
 
 class MyApp extends StatelessWidget {
@@ -39,27 +25,38 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeController themeController = Get.put(ThemeController(),permanent: true);
-    return  GetMaterialApp(
-      title: "Go7eight",
+    TranslationController translationController = Get.put(TranslationController());
+    return GetMaterialApp(
+      title: AppString.primeSocialMedia,
+      translations: AppTranslations(),
+      locale: Locale(translationController.locale),
+      fallbackLocale: const Locale(AppString.enText),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryColor),
+        useMaterial3: true,
+        splashColor: AppColor.transparentColor,
+        highlightColor: AppColor.transparentColor,
+        appBarTheme: const AppBarTheme(
+          scrolledUnderElevation: AppSize.appSize0,
+          backgroundColor: AppColor.backgroundColor,
+        ),
+      ),
       debugShowCheckedModeBanner: false,
-      translations: AppLocalization(),
-      locale: Get.deviceLocale,
-      fallbackLocale: const Locale('en', 'US'),
-      initialRoute: AppRouteNames.initialRoute,
-      getPages: AppRoutePages.pages,
-      supportedLocales: const [Locale('ar','AE')],
-      localizationsDelegates: const [
-        GlobalCupertinoLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      initialBinding:
-      SplashBinding(),
-      themeMode: themeController
-          .themeStateFromHiveSettingBox,
-      theme: ThemeX.lightTheme,
-      darkTheme: ThemeX.darkTheme,
+      home: SplashView(),
+      defaultTransition: Transition.fade,
+      getPages: AppRoutes.pages,
+      builder: (context, child) {
+        return Container(
+          color: AppColor.backgroundColor,
+          child: Center(
+            child: Container(
+              color: AppColor.backgroundColor,
+              width: kIsWeb ? AppSize.appSize800 : null,
+              child: child,
+            ),
+          ),
+        );
+      },
     );
   }
 }
