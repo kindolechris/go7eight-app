@@ -11,6 +11,7 @@ import '../../../config/app_color.dart';
 import '../../../config/app_icon.dart';
 import '../../../config/app_image.dart';
 import '../../../config/app_size.dart';
+import '../../../helpers/theme_helper.dart';
 
 class CreateReelView extends StatelessWidget {
   CreateReelView({Key? key}) : super(key: key);
@@ -39,7 +40,7 @@ class CreateReelView extends StatelessWidget {
                 child: Obx(() {
                   return createReelController.isCameraInitialized.value
                       ? createReelController.buildCameraPreview()
-                      : Container(color: AppColor.backgroundColor);
+                      : Container(color: themedColor(Get.context!, (c) => c.backgroundColor));
                 }),
               ),
               Padding(
@@ -69,14 +70,14 @@ class CreateReelView extends StatelessWidget {
                           color: AppColor.primaryColor,
                           borderRadius: BorderRadius.circular(AppSize.appSize66),
                         ),
-                        child: const Center(
+                        child:  Center(
                           child: Text(
                             AppString.buttonTextNext,
                             style: TextStyle(
                               fontSize: AppSize.appSize14,
                               fontWeight: FontWeight.w600,
                               fontFamily: AppFont.appFontSemiBold,
-                              color: AppColor.secondaryColor,
+                              color: themedColor(Get.context!, (c) => c.secondaryColor),
                             ),
                           ),
                         ),
@@ -93,7 +94,7 @@ class CreateReelView extends StatelessWidget {
                   margin: const EdgeInsets.only(right: AppSize.appSize20),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(AppSize.appSize65),
-                    color: AppColor.backgroundColor.withOpacity(AppSize.appSizePoint5),
+                    color: themedColor(Get.context!, (c) => c.backgroundColor).withOpacity(AppSize.appSizePoint5),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -140,7 +141,7 @@ class CreateReelView extends StatelessWidget {
         Container(
           height: AppSize.appSize112,
           padding: const EdgeInsets.only(left: AppSize.appSize20, right: AppSize.appSize20, top: AppSize.appSize24),
-          color: AppColor.backgroundColor,
+          color: themedColor(Get.context!, (c) => c.backgroundColor),
           child: Column(
             children: [
               Row(

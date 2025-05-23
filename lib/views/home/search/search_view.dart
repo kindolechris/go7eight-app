@@ -9,6 +9,7 @@ import '../../../config/app_icon.dart';
 import '../../../config/app_size.dart';
 import '../../../config/app_string.dart';
 import '../../../controller/home/search_controller.dart';
+import '../../../helpers/theme_helper.dart';
 import '../../../routes/app_routes.dart';
 
 class SearchView extends StatelessWidget {
@@ -21,7 +22,7 @@ class SearchView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         appBar: _appBar(),
         body: _body(),
       ),
@@ -31,7 +32,7 @@ class SearchView extends StatelessWidget {
   //Search content
   _appBar() {
     return AppBar(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       leading: Padding(
         padding: EdgeInsets.only(
           left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize20,
@@ -56,19 +57,19 @@ class SearchView extends StatelessWidget {
           right: AppSize.appSize14,
         ),
         decoration: BoxDecoration(
-          color: AppColor.cardBackgroundColor,
+          color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
           borderRadius: BorderRadius.circular(AppSize.appSize6),
-          border: Border.all(color: AppColor.borderColor, width: AppSize.appSizePoint7),
+          border: Border.all(color: themedColor(Get.context!, (c) => c.borderColor), width: AppSize.appSizePoint7),
         ),
         child: Center(
           child: TextFormField(
             controller: searchIDController.searchFieldController,
-            cursorColor: AppColor.secondaryColor,
-            style: const TextStyle(
+            cursorColor: themedColor(Get.context!, (c) => c.secondaryColor),
+            style:  TextStyle(
               fontSize: AppSize.appSize14,
               fontWeight: FontWeight.w400,
               fontFamily: AppFont.appFontSemiBold,
-              color: AppColor.secondaryColor,
+              color: themedColor(Get.context!, (c) => c.secondaryColor),
             ),
             textAlignVertical: TextAlignVertical.center,
             textInputAction: TextInputAction.done,
@@ -76,11 +77,11 @@ class SearchView extends StatelessWidget {
               contentPadding: EdgeInsets.zero,
               isDense: true,
               hintText: AppString.search,
-              hintStyle: const TextStyle(
+              hintStyle:  TextStyle(
                 fontSize: AppSize.appSize14,
                 fontWeight: FontWeight.w400,
                 fontFamily: AppFont.appFontRegular,
-                color: AppColor.text1Color,
+                color: themedColor(Get.context!, (c) => c.text1Color),
               ),
               border: const UnderlineInputBorder(
                 borderSide: BorderSide.none,
@@ -139,20 +140,20 @@ class SearchView extends StatelessWidget {
               ),
               title: Text(
                 searchIDController.searchIDList[index],
-                style: const TextStyle(
+                style:  TextStyle(
                   fontSize: AppSize.appSize14,
                   fontWeight: FontWeight.w600,
                   fontFamily: AppFont.appFontSemiBold,
-                  color: AppColor.secondaryColor,
+                  color: themedColor(Get.context!, (c) => c.secondaryColor),
                 ),
               ),
               subtitle: Text(
                 searchIDController.searchIDList[index],
-                style: const TextStyle(
+                style:  TextStyle(
                   fontSize: AppSize.appSize14,
                   fontWeight: FontWeight.w400,
                   fontFamily: AppFont.appFontRegular,
-                  color: AppColor.text2Color,
+                  color: themedColor(Get.context!, (c) => c.text2Color),
                 ),
               ),
             ),

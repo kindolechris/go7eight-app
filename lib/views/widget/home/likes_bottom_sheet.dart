@@ -10,11 +10,13 @@ import 'package:prime_social_media_flutter_ui_kit/controller/home/likes_controll
 import 'package:prime_social_media_flutter_ui_kit/controller/profile/settings_options/language_controller.dart';
 import 'package:prime_social_media_flutter_ui_kit/routes/app_routes.dart';
 
+import '../../../helpers/theme_helper.dart';
+
 likesBottomSheet(BuildContext context) {
   LikesController likesController = Get.put(LikesController());
   LanguageController languageController = Get.put(LanguageController());
   return showModalBottomSheet(
-    backgroundColor: AppColor.backgroundColor,
+    backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
     shape: const OutlineInputBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(AppSize.appSize12),
@@ -35,12 +37,12 @@ likesBottomSheet(BuildContext context) {
         padding: const EdgeInsets.only(
           top: AppSize.appSize12,
         ),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(AppSize.appSize12),
             topRight: Radius.circular(AppSize.appSize12),
           ),
-          color: AppColor.backgroundColor,
+          color: themedColor(Get.context!, (c) => c.backgroundColor),
         ),
         child: Column(
           children: [
@@ -49,7 +51,7 @@ likesBottomSheet(BuildContext context) {
               height: AppSize.appSize2,
               margin: const EdgeInsets.only(bottom: AppSize.appSize12),
               decoration: BoxDecoration(
-                color: AppColor.lineColor,
+                color: themedColor(Get.context!, (c) => c.lineColor),
                 borderRadius: BorderRadius.circular(
                   AppSize.appSize6,
                 ),
@@ -62,13 +64,13 @@ likesBottomSheet(BuildContext context) {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                   Text(
                     AppString.likes,
                     style: TextStyle(
                       fontSize: AppSize.appSize16,
                       fontWeight: FontWeight.w600,
                       fontFamily: AppFont.appFontSemiBold,
-                      color: AppColor.secondaryColor,
+                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                     ),
                   ),
                   GestureDetector(
@@ -84,8 +86,8 @@ likesBottomSheet(BuildContext context) {
                 ],
               ),
             ),
-            const Divider(
-              color: AppColor.lineColor,
+             Divider(
+              color: themedColor(Get.context!, (c) => c.lineColor),
               height: AppSize.appSize0,
               endIndent: AppSize.appSize20,
               indent: AppSize.appSize20,
@@ -101,29 +103,29 @@ likesBottomSheet(BuildContext context) {
                   right: AppSize.appSize14,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColor.cardBackgroundColor,
+                  color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                   borderRadius: BorderRadius.circular(AppSize.appSize12),
-                  border: Border.all(color: AppColor.borderColor, width: AppSize.appSizePoint7),
+                  border: Border.all(color: themedColor(Get.context!, (c) => c.borderColor), width: AppSize.appSizePoint7),
                 ),
                 child: Center(
                   child: TextFormField(
                     controller: likesController.searchController,
-                    cursorColor: AppColor.secondaryColor,
-                    style: const TextStyle(
+                    cursorColor: themedColor(Get.context!, (c) => c.secondaryColor),
+                    style:  TextStyle(
                       fontSize: AppSize.appSize14,
                       fontWeight: FontWeight.w400,
                       fontFamily: AppFont.appFontSemiBold,
-                      color: AppColor.secondaryColor,
+                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                     ),
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.zero,
                       isDense: true,
                       hintText: AppString.search,
-                      hintStyle: const TextStyle(
+                      hintStyle:  TextStyle(
                         fontSize: AppSize.appSize14,
                         fontWeight: FontWeight.w400,
                         fontFamily: AppFont.appFontRegular,
-                        color: AppColor.text1Color,
+                        color: themedColor(Get.context!, (c) => c.text1Color),
                       ),
                       border: const UnderlineInputBorder(
                         borderSide: BorderSide.none,
@@ -176,20 +178,20 @@ likesBottomSheet(BuildContext context) {
                       ),
                       title: Text(
                         likesController.likesIDList[index],
-                        style: const TextStyle(
+                        style:  TextStyle(
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w600,
                           fontFamily: AppFont.appFontSemiBold,
-                          color: AppColor.secondaryColor,
+                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                       ),
                       subtitle: Text(
                         likesController.likesIDList[index],
-                        style: const TextStyle(
+                        style:  TextStyle(
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.text2Color,
+                          color: themedColor(Get.context!, (c) => c.text2Color),
                         ),
                       ),
                       trailing: GestureDetector(
@@ -202,17 +204,17 @@ likesBottomSheet(BuildContext context) {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(AppSize.appSize6),
                             color: likesController.isFollowList[index]
-                                ? AppColor.cardBackgroundColor
+                                ? themedColor(Get.context!, (c) => c.cardBackgroundColor)
                                 : AppColor.primaryColor,
                           ),
                           child: Center(
                             child: Text(
                               likesController.isFollowList[index] ? AppString.following : AppString.follow,
-                              style: const TextStyle(
+                              style:  TextStyle(
                                 fontSize: AppSize.appSize14,
                                 fontWeight: FontWeight.w600,
                                 fontFamily: AppFont.appFontSemiBold,
-                                color: AppColor.secondaryColor,
+                                color: themedColor(Get.context!, (c) => c.secondaryColor),
                               ),
                             ),
                           ),

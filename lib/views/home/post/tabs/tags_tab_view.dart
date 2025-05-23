@@ -7,6 +7,7 @@ import 'package:prime_social_media_flutter_ui_kit/controller/home/all_post_contr
 import '../../../../config/app_color.dart';
 import '../../../../config/app_icon.dart';
 import '../../../../config/app_size.dart';
+import '../../../../helpers/theme_helper.dart';
 import '../../../../routes/app_routes.dart';
 import '../../../widget/home/post_view_dailog.dart';
 
@@ -37,7 +38,7 @@ class TagsTabView extends StatelessWidget {
               } else {
                 showDialog(
                   context: context,
-                  barrierColor: AppColor.backgroundColor.withOpacity(AppSize.appSizePoint7),
+                  barrierColor: themedColor(Get.context!, (c) => c.backgroundColor).withOpacity(AppSize.appSizePoint7),
                   builder: (context) {
                     return PostViewDialog(imageUrl: allPostController.postsList[index]);
                   },

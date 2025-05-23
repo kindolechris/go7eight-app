@@ -15,6 +15,7 @@ import '../../config/app_font.dart';
 import '../../config/app_icon.dart';
 import '../../config/app_size.dart';
 import '../../config/app_string.dart';
+import '../../helpers/theme_helper.dart';
 import '../../widget/app_button.dart';
 import '../../widget/app_textfield.dart';
 
@@ -27,7 +28,7 @@ class EditProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       appBar: _appBar(),
       body: _body(context),
     );
@@ -36,7 +37,7 @@ class EditProfileView extends StatelessWidget {
   //Edit Profile content
   _appBar() {
     return AppBar(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       scrolledUnderElevation: AppSize.appSize0,
       automaticallyImplyLeading: false,
       title: Padding(
@@ -58,13 +59,13 @@ class EditProfileView extends StatelessWidget {
                 ),
               ),
             ),
-            const Text(
+             Text(
               AppString.buttonTextEditProfile,
               style: TextStyle(
                 fontSize: AppSize.appSize20,
                 fontWeight: FontWeight.w600,
                 fontFamily: AppFont.appFontSemiBold,
-                color: AppColor.secondaryColor,
+                color: themedColor(Get.context!, (c) => c.secondaryColor),
               ),
             ),
           ],
@@ -96,7 +97,7 @@ class EditProfileView extends StatelessWidget {
                        AppImage.callProfile1,
                        width: AppSize.appSize82,
                      ) : CircleAvatar(
-                       backgroundColor: AppColor.backgroundColor,
+                       backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
                        backgroundImage: FileImage(
                          File(editProfileController.profileImagePath.value),
                        ),
@@ -125,7 +126,7 @@ class EditProfileView extends StatelessWidget {
              child: AppTextField(
                controller: editProfileController.nameController,
                labelText: AppString.name,
-               fillColor: AppColor.cardBackgroundColor,
+               fillColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                keyboardType: TextInputType.text,
                textInputAction: TextInputAction.done,
              ),
@@ -135,7 +136,7 @@ class EditProfileView extends StatelessWidget {
              child: AppTextField(
                controller: editProfileController.usernameController,
                labelText: AppString.username,
-               fillColor: AppColor.cardBackgroundColor,
+               fillColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                keyboardType: TextInputType.text,
                textInputAction: TextInputAction.done,
              ),
@@ -145,7 +146,7 @@ class EditProfileView extends StatelessWidget {
              child: AppTextField(
                controller: editProfileController.bioController,
                labelText: AppString.bio,
-               fillColor: AppColor.cardBackgroundColor,
+               fillColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                keyboardType: TextInputType.text,
                textInputAction: TextInputAction.done,
              ),
@@ -155,7 +156,7 @@ class EditProfileView extends StatelessWidget {
              child: AppTextField(
                controller: editProfileController.genderController,
                labelText: AppString.gender,
-               fillColor: AppColor.cardBackgroundColor,
+               fillColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                keyboardType: TextInputType.text,
                textInputAction: TextInputAction.done,
                suffixIcon: Padding(
@@ -177,7 +178,7 @@ class EditProfileView extends StatelessWidget {
                    child: Image.asset(AppIcon.dropdown),
                  ),
                ),
-               suffixIconColor: AppColor.text2Color,
+               suffixIconColor: themedColor(Get.context!, (c) => c.text2Color),
                suffixIconConstraints: const BoxConstraints(
                  maxWidth: AppSize.appSize37,
                ),
@@ -188,7 +189,7 @@ class EditProfileView extends StatelessWidget {
              child: AppTextField(
                controller: editProfileController.dobController,
                labelText: AppString.dateOfBirth,
-               fillColor: AppColor.cardBackgroundColor,
+               fillColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                keyboardType: TextInputType.text,
                textInputAction: TextInputAction.done,
                suffixIcon: Padding(
@@ -203,7 +204,7 @@ class EditProfileView extends StatelessWidget {
                    child: Image.asset(AppIcon.calendar),
                  ),
                ),
-               suffixIconColor: AppColor.text2Color,
+               suffixIconColor: themedColor(Get.context!, (c) => c.text2Color),
                suffixIconConstraints: const BoxConstraints(
                  maxWidth: AppSize.appSize35,
                ),
@@ -214,7 +215,7 @@ class EditProfileView extends StatelessWidget {
              child: AppTextField(
                controller: editProfileController.mobileNumberController,
                labelText: AppString.mobileNumber,
-               fillColor: AppColor.cardBackgroundColor,
+               fillColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                keyboardType: TextInputType.phone,
                textInputAction: TextInputAction.done,
                inputFormatters: [

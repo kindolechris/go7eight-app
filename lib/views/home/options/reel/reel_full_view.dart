@@ -7,6 +7,8 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_size.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
 import 'package:story_view/story_view.dart';
 
+import '../../../../helpers/theme_helper.dart';
+
 class ReelFullView extends StatelessWidget {
   ReelFullView({super.key});
 
@@ -16,7 +18,7 @@ class ReelFullView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         body: _buildHighlights(),
       ),
     );

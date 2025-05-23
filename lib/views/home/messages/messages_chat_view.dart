@@ -14,6 +14,7 @@ import '../../../config/app_font.dart';
 import '../../../config/app_icon.dart';
 import '../../../config/app_size.dart';
 import '../../../config/app_string.dart';
+import '../../../helpers/theme_helper.dart';
 
 class MessagesChatView extends StatelessWidget {
   MessagesChatView({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class MessagesChatView extends StatelessWidget {
         return true;
       },
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         appBar: _appBar(context),
         body: _body(context),
       ),
@@ -39,7 +40,7 @@ class MessagesChatView extends StatelessWidget {
   //Messages Chat content
   _appBar(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       leading: Padding(
         padding: EdgeInsets.only(
           left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize20,
@@ -77,7 +78,7 @@ class MessagesChatView extends StatelessWidget {
                 ),
               ),
             ),
-            const Column(
+             Column(
               children: [
                 Text(
                   AppString.eleanorPena,
@@ -85,7 +86,7 @@ class MessagesChatView extends StatelessWidget {
                     fontSize: AppSize.appSize14,
                     fontWeight: FontWeight.w600,
                     fontFamily: AppFont.appFontSemiBold,
-                    color: AppColor.secondaryColor,
+                    color: themedColor(Get.context!, (c) => c.secondaryColor),
                   ),
                 ),
                 Text(
@@ -94,7 +95,7 @@ class MessagesChatView extends StatelessWidget {
                     fontSize: AppSize.appSize14,
                     fontWeight: FontWeight.w400,
                     fontFamily: AppFont.appFontRegular,
-                    color: AppColor.text1Color,
+                    color: themedColor(Get.context!, (c) => c.text1Color),
                   ),
                 ),
               ],
@@ -156,7 +157,7 @@ class MessagesChatView extends StatelessWidget {
                 children: [
                   _customChatMessage(
                     kIsWeb ? AppSize.appSize400 : MediaQuery.of(context).size.width * AppSize.appSizePoint73,
-                    AppColor.chatColor,
+                    themedColor(Get.context!, (c) => c.chatColor),
                     const BorderRadius.only(
                       topLeft: Radius.circular(AppSize.appSize12),
                       topRight: Radius.circular(AppSize.appSize12),
@@ -164,13 +165,13 @@ class MessagesChatView extends StatelessWidget {
                     ),
                     AppString.loremString2,
                     AppString.pm1,
-                    AppColor.text1Color,
+                    themedColor(Get.context!, (c) => c.text1Color),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: AppSize.appSize4),
                     child: _customChatMessage(
                       kIsWeb ? AppSize.appSize355 : MediaQuery.of(context).size.width * AppSize.appSizePoint50,
-                      AppColor.chatColor,
+                      themedColor(Get.context!, (c) => c.chatColor),
                       const BorderRadius.only(
                         topLeft: Radius.circular(AppSize.appSize12),
                         topRight: Radius.circular(AppSize.appSize12),
@@ -178,7 +179,7 @@ class MessagesChatView extends StatelessWidget {
                       ),
                       AppString.loremString6,
                       AppString.pm1,
-                      AppColor.text1Color,
+                      themedColor(Get.context!, (c) => c.text1Color),
                     ),
                   ),
                   Align(
@@ -272,7 +273,7 @@ class MessagesChatView extends StatelessWidget {
                     padding: const EdgeInsets.only(top: AppSize.appSize12),
                     child: _customChatMessage(
                       kIsWeb ? AppSize.appSize355 : MediaQuery.of(context).size.width * AppSize.appSizePoint50,
-                      AppColor.chatColor,
+                      themedColor(Get.context!, (c) => c.chatColor),
                       const BorderRadius.only(
                         topLeft: Radius.circular(AppSize.appSize12),
                         topRight: Radius.circular(AppSize.appSize12),
@@ -280,7 +281,7 @@ class MessagesChatView extends StatelessWidget {
                       ),
                       AppString.loremString6,
                       AppString.pm1,
-                      AppColor.text1Color,
+                      themedColor(Get.context!, (c) => c.text1Color),
                     ),
                   ),
                   Align(
@@ -304,8 +305,8 @@ class MessagesChatView extends StatelessWidget {
                   Container(
                     width: kIsWeb ? AppSize.appSize54 : MediaQuery.of(context).size.width * AppSize.appSizePoint13,
                     margin: const EdgeInsets.only(top: AppSize.appSize12),
-                    decoration: const BoxDecoration(
-                      color: AppColor.chatColor,
+                    decoration:  BoxDecoration(
+                      color: themedColor(Get.context!, (c) => c.chatColor),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(AppSize.appSize12),
                         topRight: Radius.circular(AppSize.appSize12),
@@ -322,8 +323,8 @@ class MessagesChatView extends StatelessWidget {
                           Container(
                             width: AppSize.appSize8,
                             height: AppSize.appSize8,
-                            decoration: const BoxDecoration(
-                              color: AppColor.text1Color,
+                            decoration:  BoxDecoration(
+                              color: themedColor(Get.context!, (c) => c.text1Color),
                               shape: BoxShape.circle,
                             ),
                           ),
@@ -331,7 +332,7 @@ class MessagesChatView extends StatelessWidget {
                             width: AppSize.appSize8,
                             height: AppSize.appSize8,
                             decoration: BoxDecoration(
-                              color: AppColor.text1Color.withOpacity(AppSize.appSizePoint6),
+                              color: themedColor(Get.context!, (c) => c.text1Color).withOpacity(AppSize.appSizePoint6),
                               shape: BoxShape.circle,
                             ),
                           ),
@@ -339,7 +340,7 @@ class MessagesChatView extends StatelessWidget {
                             width: AppSize.appSize8,
                             height: AppSize.appSize8,
                             decoration: BoxDecoration(
-                              color: AppColor.text1Color.withOpacity(AppSize.appSizePoint4),
+                              color: themedColor(Get.context!, (c) => c.text1Color).withOpacity(AppSize.appSizePoint4),
                               shape: BoxShape.circle,
                             ),
                           ),
@@ -364,19 +365,19 @@ class MessagesChatView extends StatelessWidget {
                     height: AppSize.appSize48,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(AppSize.appSize12),
-                      color: AppColor.cardBackgroundColor,
+                      color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                       border: Border.all(
-                        color: AppColor.borderColor,
+                        color: themedColor(Get.context!, (c) => c.borderColor),
                       ),
                     ),
                     child: TextFormField(
                       controller: messageChatController.typeMessageController,
-                      cursorColor: AppColor.secondaryColor,
-                      style: const TextStyle(
+                      cursorColor: themedColor(Get.context!, (c) => c.secondaryColor),
+                      style:  TextStyle(
                         fontSize: AppSize.appSize14,
                         fontWeight: FontWeight.w400,
                         fontFamily: AppFont.appFontSemiBold,
-                        color: AppColor.secondaryColor,
+                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                       ),
                       focusNode: messageChatController.messageFocusNode,
                       decoration: InputDecoration(
@@ -384,11 +385,11 @@ class MessagesChatView extends StatelessWidget {
                           bottom: AppSize.appSize1,
                         ),
                         hintText: AppString.typeMessage,
-                        hintStyle: const TextStyle(
+                        hintStyle:  TextStyle(
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.text1Color,
+                          color: themedColor(Get.context!, (c) => c.text1Color),
                         ),
                         border: const UnderlineInputBorder(
                           borderSide: BorderSide.none,
@@ -475,7 +476,7 @@ class MessagesChatView extends StatelessWidget {
                     child: Image.asset(
                       AppIcon.send,
                       width: AppSize.appSize20,
-                      color: AppColor.secondaryColor,
+                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                     ),
                   ),
                 ),
@@ -504,11 +505,11 @@ class MessagesChatView extends StatelessWidget {
             child: Text(
               text1,
               textAlign: languageController.selectedLanguageIndex.value == AppSize.size2 ? TextAlign.right : TextAlign.left,
-              style: const TextStyle(
+              style:  TextStyle(
                 fontSize: AppSize.appSize14,
                 fontWeight: FontWeight.w400,
                 fontFamily: AppFont.appFontRegular,
-                color: AppColor.secondaryColor,
+                color: themedColor(Get.context!, (c) => c.secondaryColor),
               ),
             ),
           ),

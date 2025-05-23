@@ -10,12 +10,14 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/home/comments_controller.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/profile/settings_options/language_controller.dart';
 
+import '../../../helpers/theme_helper.dart';
+
 LanguageController languageController = Get.put(LanguageController());
 
 commentsBottomSheet(BuildContext context) {
   CommentsController commentsController = Get.put(CommentsController());
   return showModalBottomSheet(
-    backgroundColor: AppColor.backgroundColor,
+    backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
     shape: const OutlineInputBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(AppSize.appSize12),
@@ -36,12 +38,12 @@ commentsBottomSheet(BuildContext context) {
         padding: const EdgeInsets.only(
           top: AppSize.appSize12,
         ),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(AppSize.appSize12),
             topRight: Radius.circular(AppSize.appSize12),
           ),
-          color: AppColor.backgroundColor,
+          color: themedColor(Get.context!, (c) => c.backgroundColor),
         ),
         child: Column(
           children: [
@@ -50,7 +52,7 @@ commentsBottomSheet(BuildContext context) {
               height: AppSize.appSize2,
               margin: const EdgeInsets.only(bottom: AppSize.appSize12),
               decoration: BoxDecoration(
-                color: AppColor.lineColor,
+                color: themedColor(Get.context!, (c) => c.lineColor),
                 borderRadius: BorderRadius.circular(
                   AppSize.appSize6,
                 ),
@@ -63,13 +65,13 @@ commentsBottomSheet(BuildContext context) {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                   Text(
                     AppString.comments,
                     style: TextStyle(
                       fontSize: AppSize.appSize16,
                       fontWeight: FontWeight.w600,
                       fontFamily: AppFont.appFontSemiBold,
-                      color: AppColor.secondaryColor,
+                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                     ),
                   ),
                   GestureDetector(
@@ -85,8 +87,8 @@ commentsBottomSheet(BuildContext context) {
                 ],
               ),
             ),
-            const Divider(
-              color: AppColor.lineColor,
+             Divider(
+              color: themedColor(Get.context!, (c) => c.lineColor),
               height: AppSize.appSize0,
               endIndent: AppSize.appSize20,
               indent: AppSize.appSize20,
@@ -126,23 +128,23 @@ commentsBottomSheet(BuildContext context) {
                                           left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize8 : AppSize.appSize0,
                                           right: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize8,
                                         ),
-                                        child: const Text(
+                                        child:  Text(
                                           AppString.eleanorPena,
                                           style: TextStyle(
                                             fontSize: AppSize.appSize14,
                                             fontWeight: FontWeight.w600,
                                             fontFamily: AppFont.appFontSemiBold,
-                                            color: AppColor.secondaryColor,
+                                            color: themedColor(Get.context!, (c) => c.secondaryColor),
                                           ),
                                         ),
                                       ),
-                                      const Text(
+                                       Text(
                                         AppString.min33,
                                         style: TextStyle(
                                           fontSize: AppSize.appSize14,
                                           fontWeight: FontWeight.w400,
                                           fontFamily: AppFont.appFontRegular,
-                                          color: AppColor.text1Color,
+                                          color: themedColor(Get.context!, (c) => c.text1Color),
                                         ),
                                       ),
                                     ],
@@ -159,20 +161,20 @@ commentsBottomSheet(BuildContext context) {
                                           width: AppSize.appSize18,
                                         ),
                                       ),
-                                      const Text(
+                                       Text(
                                         AppString.likes55k,
                                         style: TextStyle(
                                           fontSize: AppSize.appSize12,
                                           fontWeight: FontWeight.w600,
                                           fontFamily: AppFont.appFontSemiBold,
-                                          color: AppColor.secondaryColor,
+                                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
-                              const Padding(
+                               Padding(
                                 padding: EdgeInsets.only(top: AppSize.appSize4),
                                 child: Text(
                                   AppString.loremString,
@@ -180,11 +182,11 @@ commentsBottomSheet(BuildContext context) {
                                     fontSize: AppSize.appSize14,
                                     fontWeight: FontWeight.w400,
                                     fontFamily: AppFont.appFontRegular,
-                                    color: AppColor.text2Color,
+                                    color: themedColor(Get.context!, (c) => c.text2Color),
                                   ),
                                 ),
                               ),
-                              const Padding(
+                               Padding(
                                 padding: EdgeInsets.only(top: AppSize.appSize4),
                                 child: Text(
                                   AppString.reply,
@@ -192,7 +194,7 @@ commentsBottomSheet(BuildContext context) {
                                     fontSize: AppSize.appSize14,
                                     fontWeight: FontWeight.w600,
                                     fontFamily: AppFont.appFontSemiBold,
-                                    color: AppColor.text2Color,
+                                    color: themedColor(Get.context!, (c) => c.text2Color),
                                   ),
                                 ),
                               ),
@@ -225,23 +227,23 @@ commentsBottomSheet(BuildContext context) {
                                                       left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize8 : AppSize.appSize0,
                                                       right: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize8,
                                                     ),
-                                                    child: const Text(
+                                                    child:  Text(
                                                       AppString.bessieCooper,
                                                       style: TextStyle(
                                                         fontSize: AppSize.appSize12,
                                                         fontWeight: FontWeight.w600,
                                                         fontFamily: AppFont.appFontSemiBold,
-                                                        color: AppColor.secondaryColor,
+                                                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                                                       ),
                                                     ),
                                                   ),
-                                                  const Text(
+                                                   Text(
                                                     AppString.day1,
                                                     style: TextStyle(
                                                       fontSize: AppSize.appSize12,
                                                       fontWeight: FontWeight.w400,
                                                       fontFamily: AppFont.appFontRegular,
-                                                      color: AppColor.text1Color,
+                                                      color: themedColor(Get.context!, (c) => c.text1Color),
                                                     ),
                                                   ),
                                                 ],
@@ -258,20 +260,20 @@ commentsBottomSheet(BuildContext context) {
                                                       width: AppSize.appSize18,
                                                     ),
                                                   ),
-                                                  const Text(
+                                                   Text(
                                                     AppString.likes15k,
                                                     style: TextStyle(
                                                       fontSize: AppSize.appSize12,
                                                       fontWeight: FontWeight.w600,
                                                       fontFamily: AppFont.appFontSemiBold,
-                                                      color: AppColor.secondaryColor,
+                                                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             ],
                                           ),
-                                          const Padding(
+                                           Padding(
                                             padding: EdgeInsets.only(top: AppSize.appSize4),
                                             child: Text(
                                               AppString.loremString2,
@@ -279,11 +281,11 @@ commentsBottomSheet(BuildContext context) {
                                                 fontSize: AppSize.appSize14,
                                                 fontWeight: FontWeight.w400,
                                                 fontFamily: AppFont.appFontRegular,
-                                                color: AppColor.text2Color,
+                                                color: themedColor(Get.context!, (c) => c.text2Color),
                                               ),
                                             ),
                                           ),
-                                          const Padding(
+                                           Padding(
                                             padding: EdgeInsets.only(top: AppSize.appSize4),
                                             child: Text(
                                               AppString.reply,
@@ -291,7 +293,7 @@ commentsBottomSheet(BuildContext context) {
                                                 fontSize: AppSize.appSize14,
                                                 fontWeight: FontWeight.w600,
                                                 fontFamily: AppFont.appFontSemiBold,
-                                                color: AppColor.text2Color,
+                                                color: themedColor(Get.context!, (c) => c.text2Color),
                                               ),
                                             ),
                                           ),
@@ -330,23 +332,23 @@ commentsBottomSheet(BuildContext context) {
                                                       left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize8 : AppSize.appSize0,
                                                       right: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize8,
                                                     ),
-                                                    child: const Text(
+                                                    child:  Text(
                                                       AppString.kathrynMurphy,
                                                       style: TextStyle(
                                                         fontSize: AppSize.appSize12,
                                                         fontWeight: FontWeight.w600,
                                                         fontFamily: AppFont.appFontSemiBold,
-                                                        color: AppColor.secondaryColor,
+                                                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                                                       ),
                                                     ),
                                                   ),
-                                                  const Text(
+                                                   Text(
                                                     AppString.day2,
                                                     style: TextStyle(
                                                       fontSize: AppSize.appSize12,
                                                       fontWeight: FontWeight.w400,
                                                       fontFamily: AppFont.appFontRegular,
-                                                      color: AppColor.text1Color,
+                                                      color: themedColor(Get.context!, (c) => c.text1Color),
                                                     ),
                                                   ),
                                                 ],
@@ -363,20 +365,20 @@ commentsBottomSheet(BuildContext context) {
                                                       width: AppSize.appSize18,
                                                     ),
                                                   ),
-                                                  const Text(
+                                                   Text(
                                                     AppString.likes5k,
                                                     style: TextStyle(
                                                       fontSize: AppSize.appSize12,
                                                       fontWeight: FontWeight.w600,
                                                       fontFamily: AppFont.appFontSemiBold,
-                                                      color: AppColor.secondaryColor,
+                                                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                                                     ),
                                                   ),
                                                 ],
                                               ),
                                             ],
                                           ),
-                                          const Padding(
+                                           Padding(
                                             padding: EdgeInsets.only(top: AppSize.appSize4),
                                             child: Text(
                                               AppString.loremString3,
@@ -384,11 +386,11 @@ commentsBottomSheet(BuildContext context) {
                                                 fontSize: AppSize.appSize14,
                                                 fontWeight: FontWeight.w400,
                                                 fontFamily: AppFont.appFontRegular,
-                                                color: AppColor.text2Color,
+                                                color: themedColor(Get.context!, (c) => c.text2Color),
                                               ),
                                             ),
                                           ),
-                                          const Padding(
+                                           Padding(
                                             padding: EdgeInsets.only(top: AppSize.appSize4),
                                             child: Text(
                                               AppString.reply,
@@ -396,7 +398,7 @@ commentsBottomSheet(BuildContext context) {
                                                 fontSize: AppSize.appSize14,
                                                 fontWeight: FontWeight.w600,
                                                 fontFamily: AppFont.appFontSemiBold,
-                                                color: AppColor.text2Color,
+                                                color: themedColor(Get.context!, (c) => c.text2Color),
                                               ),
                                             ),
                                           ),
@@ -429,7 +431,7 @@ commentsBottomSheet(BuildContext context) {
               margin: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom,
               ),
-              color: AppColor.cardBackgroundColor,
+              color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
               child: ListTile(
                 contentPadding: EdgeInsets.zero,
                 leading: Image.asset(
@@ -437,23 +439,23 @@ commentsBottomSheet(BuildContext context) {
                   width: AppSize.appSize32,
                 ),
                 title: TextFormField(
-                  cursorColor: AppColor.secondaryColor,
+                  cursorColor: themedColor(Get.context!, (c) => c.secondaryColor),
                   controller: commentsController.commentsFieldController,
                   textInputAction: TextInputAction.newline,
-                  style: const TextStyle(
+                  style:  TextStyle(
                     fontSize: AppSize.appSize14,
                     fontWeight: FontWeight.w400,
                     fontFamily: AppFont.appFontSemiBold,
-                    color: AppColor.secondaryColor,
+                    color: themedColor(Get.context!, (c) => c.secondaryColor),
                   ),
-                  decoration: const InputDecoration(
+                  decoration:  InputDecoration(
                     contentPadding: EdgeInsets.only(bottom: AppSize.appSize4),
                     hintText: AppString.addComments,
                     hintStyle: TextStyle(
                       fontSize: AppSize.appSize14,
                       fontWeight: FontWeight.w400,
                       fontFamily: AppFont.appFontRegular,
-                      color: AppColor.text2Color,
+                      color: themedColor(Get.context!, (c) => c.text2Color),
                     ),
                     border: UnderlineInputBorder(
                       borderSide: BorderSide.none,
@@ -515,21 +517,21 @@ _customChatMessage(String image, String username, String time, String descriptio
                         ),
                         child: Text(
                           username,
-                          style: const TextStyle(
+                          style:  TextStyle(
                             fontSize: AppSize.appSize14,
                             fontWeight: FontWeight.w600,
                             fontFamily: AppFont.appFontSemiBold,
-                            color: AppColor.secondaryColor,
+                            color: themedColor(Get.context!, (c) => c.secondaryColor),
                           ),
                         ),
                       ),
                       Text(
                         time,
-                        style: const TextStyle(
+                        style:  TextStyle(
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.text1Color,
+                          color: themedColor(Get.context!, (c) => c.text1Color),
                         ),
                       ),
                     ],
@@ -548,11 +550,11 @@ _customChatMessage(String image, String username, String time, String descriptio
                       ),
                       Text(
                         likes,
-                        style: const TextStyle(
+                        style:  TextStyle(
                           fontSize: AppSize.appSize12,
                           fontWeight: FontWeight.w600,
                           fontFamily: AppFont.appFontSemiBold,
-                          color: AppColor.secondaryColor,
+                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                       ),
                     ],
@@ -563,15 +565,15 @@ _customChatMessage(String image, String username, String time, String descriptio
                 padding: const EdgeInsets.only(top: AppSize.appSize4),
                 child: Text(
                   description,
-                  style: const TextStyle(
+                  style:  TextStyle(
                     fontSize: AppSize.appSize14,
                     fontWeight: FontWeight.w400,
                     fontFamily: AppFont.appFontRegular,
-                    color: AppColor.text2Color,
+                    color: themedColor(Get.context!, (c) => c.text2Color),
                   ),
                 ),
               ),
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(top: AppSize.appSize4),
                 child: Text(
                   AppString.reply,
@@ -579,7 +581,7 @@ _customChatMessage(String image, String username, String time, String descriptio
                     fontSize: AppSize.appSize14,
                     fontWeight: FontWeight.w600,
                     fontFamily: AppFont.appFontSemiBold,
-                    color: AppColor.text2Color,
+                    color: themedColor(Get.context!, (c) => c.text2Color),
                   ),
                 ),
               ),

@@ -11,6 +11,7 @@ import '../../../config/app_font.dart';
 import '../../../config/app_icon.dart';
 import '../../../config/app_size.dart';
 import '../../../config/app_string.dart';
+import '../../../helpers/theme_helper.dart';
 
 class ReelsPlayFullView extends StatelessWidget {
   ReelsPlayFullView({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class ReelsPlayFullView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         body: _body(context),
       ),
     );
@@ -82,13 +83,13 @@ class ReelsPlayFullView extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            const Text(
+                             Text(
                               AppString.marvinID,
                               style: TextStyle(
                                 fontSize: AppSize.appSize14,
                                 fontWeight: FontWeight.w600,
                                 fontFamily: AppFont.appFontSemiBold,
-                                color: AppColor.secondaryColor,
+                                color: themedColor(Get.context!, (c) => c.secondaryColor),
                               ),
                             ),
                             GestureDetector(
@@ -101,18 +102,18 @@ class ReelsPlayFullView extends StatelessWidget {
                                 margin: const EdgeInsets.only(left: AppSize.appSize8, top: AppSize.appSize4),
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: AppColor.secondaryColor,
+                                    color: themedColor(Get.context!, (c) => c.secondaryColor),
                                   ),
                                   borderRadius: BorderRadius.circular(AppSize.appSize6),
                                 ),
                                 child: Center(
                                   child: Text(
                                     reelsPlayController.isFollow.value ? AppString.following : AppString.follow,
-                                    style: const TextStyle(
+                                    style:  TextStyle(
                                       fontSize: AppSize.appSize12,
                                       fontWeight: FontWeight.w600,
                                       fontFamily: AppFont.appFontSemiBold,
-                                      color: AppColor.secondaryColor,
+                                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                                     ),
                                   ),
                                 ),
@@ -135,13 +136,13 @@ class ReelsPlayFullView extends StatelessWidget {
                           width: AppSize.appSize14,
                         ),
                       ),
-                      const Text(
+                       Text(
                         AppString.martinGarrixSong,
                         style: TextStyle(
                           fontSize: AppSize.appSize12,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.secondaryColor,
+                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                       ),
                     ],
@@ -223,11 +224,11 @@ class ReelsPlayFullView extends StatelessWidget {
             ),
             Text(
               text,
-              style: const TextStyle(
+              style:  TextStyle(
                 fontSize: AppSize.appSize14,
                 fontWeight: FontWeight.w600,
                 fontFamily: AppFont.appFontSemiBold,
-                color: AppColor.secondaryColor,
+                color: themedColor(Get.context!, (c) => c.secondaryColor),
               ),
             ),
           ],

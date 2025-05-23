@@ -6,10 +6,11 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
 import 'package:prime_social_media_flutter_ui_kit/routes/app_routes.dart';
 import '../../../../config/app_color.dart';
 import '../../../../config/app_size.dart';
+import '../../../../helpers/theme_helper.dart';
 
 logoutBottomSheet(BuildContext context) {
   return showModalBottomSheet(
-    backgroundColor: AppColor.backgroundColor,
+    backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
     shape: const OutlineInputBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(AppSize.appSize12),
@@ -30,12 +31,12 @@ logoutBottomSheet(BuildContext context) {
         padding: const EdgeInsets.only(
           top: AppSize.appSize12,
         ),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(AppSize.appSize12),
             topRight: Radius.circular(AppSize.appSize12),
           ),
-          color: AppColor.backgroundColor,
+          color: themedColor(Get.context!, (c) => c.backgroundColor),
         ),
         child: Column(
           children: [
@@ -44,7 +45,7 @@ logoutBottomSheet(BuildContext context) {
               height: AppSize.appSize2,
               margin: const EdgeInsets.only(bottom: AppSize.appSize24),
               decoration: BoxDecoration(
-                color: AppColor.lineColor,
+                color: themedColor(Get.context!, (c) => c.lineColor),
                 borderRadius: BorderRadius.circular(
                   AppSize.appSize6,
                 ),
@@ -60,22 +61,22 @@ logoutBottomSheet(BuildContext context) {
                   children: [
                     Text(
                       AppString.logoutT.tr,
-                      style: const TextStyle(
+                      style:  TextStyle(
                         fontSize: AppSize.appSize20,
                         fontWeight: FontWeight.w600,
                         fontFamily: AppFont.appFontSemiBold,
-                        color: AppColor.secondaryColor,
+                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: AppSize.appSize18),
                       child: Text(
                         AppString.confirmLogoutT.tr,
-                        style: const TextStyle(
+                        style:  TextStyle(
                           fontSize: AppSize.appSize16,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.secondaryColor,
+                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                       ),
                     ),
@@ -125,11 +126,11 @@ logoutBottomSheet(BuildContext context) {
                                 child: Center(
                                   child: Text(
                                     AppString.logoutT.tr,
-                                    style: const TextStyle(
+                                    style:  TextStyle(
                                       fontSize: AppSize.appSize16,
                                       fontWeight: FontWeight.w600,
                                       fontFamily: AppFont.appFontSemiBold,
-                                      color: AppColor.secondaryColor,
+                                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                                     ),
                                   ),
                                 ),

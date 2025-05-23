@@ -11,6 +11,7 @@ import 'package:prime_social_media_flutter_ui_kit/routes/app_routes.dart';
 import '../../../config/app_color.dart';
 import '../../../config/app_icon.dart';
 import '../../../config/app_size.dart';
+import '../../../helpers/theme_helper.dart';
 
 class ReelUploadView extends StatelessWidget {
   ReelUploadView({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class ReelUploadView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       appBar: _appBar(),
       body: _body(),
       bottomNavigationBar: _bottomBar(context),
@@ -31,7 +32,7 @@ class ReelUploadView extends StatelessWidget {
   //Reel Upload content
   _appBar() {
     return AppBar(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       leading: Padding(
         padding: EdgeInsets.only(
           left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize20,
@@ -63,7 +64,7 @@ class ReelUploadView extends StatelessWidget {
             height: AppSize.appSize122,
             padding: const EdgeInsets.all(AppSize.appSize12),
             decoration: BoxDecoration(
-              color: AppColor.cardBackgroundColor,
+              color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
               borderRadius: BorderRadius.circular(AppSize.appSize12),
             ),
             child: Row(
@@ -85,23 +86,23 @@ class ReelUploadView extends StatelessWidget {
                 Expanded(
                   child: TextFormField(
                     controller: reelUploadController.descriptionController,
-                    cursorColor: AppColor.secondaryColor,
+                    cursorColor: themedColor(Get.context!, (c) => c.secondaryColor),
                     maxLines: AppSize.size5,
                     maxLength: AppSize.size200,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       fontSize: AppSize.appSize14,
                       fontWeight: FontWeight.w400,
                       fontFamily: AppFont.appFontRegular,
-                      color: AppColor.secondaryColor,
+                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                     ),
-                    decoration: const InputDecoration(
+                    decoration:  InputDecoration(
                       contentPadding: EdgeInsets.zero,
                       hintText: AppString.addDescription,
                       hintStyle: TextStyle(
                         fontSize: AppSize.appSize14,
                         fontWeight: FontWeight.w400,
                         fontFamily: AppFont.appFontRegular,
-                        color: AppColor.text1Color,
+                        color: themedColor(Get.context!, (c) => c.text1Color),
                       ),
                       border: UnderlineInputBorder(
                         borderSide: BorderSide.none,
@@ -116,11 +117,11 @@ class ReelUploadView extends StatelessWidget {
                     buildCounter: (BuildContext context, {required int currentLength, required bool isFocused, int? maxLength}) {
                       return Text(
                         '$currentLength/$maxLength',
-                        style: const TextStyle(
+                        style:  TextStyle(
                           fontSize: AppSize.appSize12,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.text1Color,
+                          color: themedColor(Get.context!, (c) => c.text1Color),
                         ),
                       );
                     },
@@ -134,10 +135,10 @@ class ReelUploadView extends StatelessWidget {
             margin: const EdgeInsets.only(top: AppSize.appSize11),
             padding: const EdgeInsets.all(AppSize.appSize12),
             decoration: BoxDecoration(
-              color: AppColor.cardBackgroundColor,
+              color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
               borderRadius: BorderRadius.circular(AppSize.appSize12),
             ),
-            child: const Column(
+            child:  Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -147,11 +148,11 @@ class ReelUploadView extends StatelessWidget {
                     fontSize: AppSize.appSize14,
                     fontWeight: FontWeight.w400,
                     fontFamily: AppFont.appFontRegular,
-                    color: AppColor.secondaryColor,
+                    color: themedColor(Get.context!, (c) => c.secondaryColor),
                   ),
                 ),
                 Divider(
-                  color: AppColor.borderColor,
+                  color: themedColor(Get.context!, (c) => c.borderColor),
                   height: AppSize.appSize0,
                 ),
                 Text(
@@ -160,11 +161,11 @@ class ReelUploadView extends StatelessWidget {
                     fontSize: AppSize.appSize14,
                     fontWeight: FontWeight.w400,
                     fontFamily: AppFont.appFontRegular,
-                    color: AppColor.secondaryColor,
+                    color: themedColor(Get.context!, (c) => c.secondaryColor),
                   ),
                 ),
                 Divider(
-                  color: AppColor.borderColor,
+                  color: themedColor(Get.context!, (c) => c.borderColor),
                   height: AppSize.appSize0,
                 ),
                 Text(
@@ -173,7 +174,7 @@ class ReelUploadView extends StatelessWidget {
                     fontSize: AppSize.appSize14,
                     fontWeight: FontWeight.w400,
                     fontFamily: AppFont.appFontRegular,
-                    color: AppColor.secondaryColor,
+                    color: themedColor(Get.context!, (c) => c.secondaryColor),
                   ),
                 ),
               ],
@@ -184,7 +185,7 @@ class ReelUploadView extends StatelessWidget {
             margin: const EdgeInsets.only(top: AppSize.appSize11),
             padding: const EdgeInsets.all(AppSize.appSize12),
             decoration: BoxDecoration(
-              color: AppColor.cardBackgroundColor,
+              color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
               borderRadius: BorderRadius.circular(AppSize.appSize12),
             ),
             child: Column(
@@ -194,13 +195,13 @@ class ReelUploadView extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                     Text(
                       AppString.hideLike,
                       style: TextStyle(
                         fontSize: AppSize.appSize14,
                         fontWeight: FontWeight.w400,
                         fontFamily: AppFont.appFontRegular,
-                        color: AppColor.secondaryColor,
+                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                       ),
                     ),
                     GestureDetector(
@@ -215,20 +216,20 @@ class ReelUploadView extends StatelessWidget {
                     ),
                   ],
                 ),
-                const Divider(
-                  color: AppColor.borderColor,
+                 Divider(
+                  color: themedColor(Get.context!, (c) => c.borderColor),
                   height: AppSize.appSize0,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                     Text(
                       AppString.hideComments,
                       style: TextStyle(
                         fontSize: AppSize.appSize14,
                         fontWeight: FontWeight.w400,
                         fontFamily: AppFont.appFontRegular,
-                        color: AppColor.secondaryColor,
+                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                       ),
                     ),
                     GestureDetector(
@@ -259,7 +260,7 @@ class ReelUploadView extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Get.offAllNamed(AppRoutes.bottomBarView);
+          Get.offAllNamed(AppRoutes.buyerHomeView);
         },
         child: Container(
           height: AppSize.appSize48,
@@ -268,14 +269,14 @@ class ReelUploadView extends StatelessWidget {
             color: AppColor.primaryColor,
             borderRadius: BorderRadius.circular(AppSize.appSize66),
           ),
-          child: const Center(
+          child:  Center(
             child: Text(
               AppString.buttonTextUploadNow,
               style: TextStyle(
                 fontSize: AppSize.appSize16,
                 fontWeight: FontWeight.w600,
                 fontFamily: AppFont.appFontSemiBold,
-                color: AppColor.secondaryColor,
+                color: themedColor(Get.context!, (c) => c.secondaryColor),
               ),
             ),
           ),

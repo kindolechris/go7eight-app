@@ -1,5 +1,7 @@
 class AppString {
-  static const String primeSocialMedia = "Prime Social Media";
+  static const String primeSocialMedia = "Go7eight";
+  static const String titleTextSignIn = "Welcome back! Sign in";
+  static const String titleTextSignUp = "Welcome back! or Sign up";
   static const String loginField1 = "Phone number, username, or email";
   static const String loginField2 = "Password";
   static const String forgotPassword = "Forgot password?";
@@ -30,7 +32,7 @@ class AppString {
   static const String following = "Following";
   static const String recommend = "Recommend";
   static const String davidMorel = "David Morel";
-  static const String india = "India";
+  static const String daressalaam = "Dar es Salaam";
   static const String min33 = "33m";
   static const String comment10k = "10k";
   static const String repost15k = "15k";
@@ -285,6 +287,8 @@ class AppString {
   static const String dateFormatString = "dd MMMM yyyy";
 
   static const String buttonTextLogIn = "Log In";
+  static const String buttonTextLogOut = "Log Out";
+
   static const String buttonTextSignUp = "Sign Up";
   static const String buttonTextNext = "Next";
   static const String buttonTextResetPassword = "Reset password";

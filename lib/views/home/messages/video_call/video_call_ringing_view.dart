@@ -9,6 +9,7 @@ import '../../../../config/app_color.dart';
 import '../../../../config/app_icon.dart';
 import '../../../../config/app_image.dart';
 import '../../../../config/app_size.dart';
+import '../../../../helpers/theme_helper.dart';
 
 class VideoCallRingingView extends StatelessWidget {
   VideoCallRingingView({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class VideoCallRingingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       body: GestureDetector(
         onTap: () {
           Get.toNamed(AppRoutes.videoCallView);

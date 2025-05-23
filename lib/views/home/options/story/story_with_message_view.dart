@@ -11,6 +11,8 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/home/story_controller.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/profile/settings_options/language_controller.dart';
 
+import '../../../../helpers/theme_helper.dart';
+
 class StoryWithMessageView extends StatelessWidget {
   StoryWithMessageView({Key? key}) : super(key: key);
 
@@ -21,7 +23,7 @@ class StoryWithMessageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         body: _body(),
       ),
     );
@@ -62,27 +64,27 @@ class StoryWithMessageView extends StatelessWidget {
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(AppSize.appSize12),
-                      color: AppColor.cardBackgroundColor,
+                      color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                     ),
                     child: TextFormField(
                       controller: storyController.sendMessageController,
-                      cursorColor: AppColor.secondaryColor,
+                      cursorColor: themedColor(Get.context!, (c) => c.secondaryColor),
                       textAlignVertical: TextAlignVertical.top,
-                      style: const TextStyle(
+                      style:  TextStyle(
                         fontSize: AppSize.appSize14,
                         fontWeight: FontWeight.w400,
                         fontFamily: AppFont.appFontSemiBold,
-                        color: AppColor.secondaryColor,
+                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                       ),
                       decoration: InputDecoration(
                         isDense: true,
                         contentPadding: EdgeInsets.only(bottom: AppSize.appSize5),
                         hintText: AppString.sendMessage,
-                        hintStyle: const TextStyle(
+                        hintStyle:  TextStyle(
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.text1Color,
+                          color: themedColor(Get.context!, (c) => c.text1Color),
                         ),
                         border: const UnderlineInputBorder(
                           borderSide: BorderSide.none,
@@ -120,7 +122,7 @@ class StoryWithMessageView extends StatelessWidget {
                     child: Image.asset(
                       AppIcon.send,
                       width: AppSize.appSize20,
-                      color: AppColor.secondaryColor,
+                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                     ),
                   ),
                 ),
@@ -160,34 +162,34 @@ class StoryWithMessageView extends StatelessWidget {
                               right: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize8,
                               left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize8 : AppSize.appSize0,
                             ),
-                            child: const Text(
+                            child:  Text(
                               AppString.eleanorPenaID,
                               style: TextStyle(
                                 fontSize: AppSize.appSize12,
                                 fontWeight: FontWeight.w600,
                                 fontFamily: AppFont.appFontSemiBold,
-                                color: AppColor.secondaryColor,
+                                color: themedColor(Get.context!, (c) => c.secondaryColor),
                               ),
                             ),
                           ),
-                          const Text(
+                           Text(
                             AppString.day2,
                             style: TextStyle(
                               fontSize: AppSize.appSize12,
                               fontWeight: FontWeight.w400,
                               fontFamily: AppFont.appFontRegular,
-                              color: AppColor.secondaryColor,
+                              color: themedColor(Get.context!, (c) => c.secondaryColor),
                             ),
                           ),
                         ],
                       ),
-                      const Text(
+                       Text(
                         AppString.eleanorPena,
                         style: TextStyle(
                           fontSize: AppSize.appSize12,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.secondaryColor,
+                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                       ),
                     ],
@@ -210,8 +212,8 @@ class StoryWithMessageView extends StatelessWidget {
             Expanded(
               child: Container(
                 height: AppSize.appSize2,
-                decoration: const BoxDecoration(
-                  color: AppColor.text1Color,
+                decoration:  BoxDecoration(
+                  color: themedColor(Get.context!, (c) => c.text1Color),
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(AppSize.appSize2),
                     bottomRight: Radius.circular(AppSize.appSize2),
@@ -222,8 +224,8 @@ class StoryWithMessageView extends StatelessWidget {
                     Container(
                       height: AppSize.appSize2,
                       width: AppSize.appSize150,
-                      decoration: const BoxDecoration(
-                        color: AppColor.secondaryColor,
+                      decoration:  BoxDecoration(
+                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(AppSize.appSize2),
                           bottomRight: Radius.circular(AppSize.appSize2),
@@ -240,8 +242,8 @@ class StoryWithMessageView extends StatelessWidget {
             Expanded(
               child: Container(
                 height: AppSize.appSize2,
-                decoration: const BoxDecoration(
-                  color: AppColor.text1Color,
+                decoration:  BoxDecoration(
+                  color: themedColor(Get.context!, (c) => c.text1Color),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(AppSize.appSize2),
                     bottomLeft: Radius.circular(AppSize.appSize2),

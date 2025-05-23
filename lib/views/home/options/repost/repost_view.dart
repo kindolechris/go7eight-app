@@ -12,6 +12,7 @@ import '../../../../config/app_font.dart';
 import '../../../../config/app_icon.dart';
 import '../../../../config/app_image.dart';
 import '../../../../config/app_size.dart';
+import '../../../../helpers/theme_helper.dart';
 
 class RepostView extends StatelessWidget {
   RepostView({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class RepostView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         appBar: _appBar(),
         body: _body(),
       ),
@@ -33,7 +34,7 @@ class RepostView extends StatelessWidget {
   //Repost content
   _appBar() {
     return AppBar(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       leading: Padding(
         padding: EdgeInsets.only(
           left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize20,
@@ -67,7 +68,7 @@ class RepostView extends StatelessWidget {
             height: AppSize.appSize34,
             width: AppSize.appSize100,
             backgroundColor: AppColor.primaryColor,
-            textColor: AppColor.secondaryColor,
+            textColor: themedColor(Get.context!, (c) => c.secondaryColor),
           ),
         ),
       ],
@@ -86,7 +87,7 @@ class RepostView extends StatelessWidget {
             padding: const EdgeInsets.all(AppSize.appSize12),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppSize.appSize12),
-              border: Border.all(color: AppColor.lineColor),
+              border: Border.all(color: themedColor(Get.context!, (c) => c.lineColor)),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -106,7 +107,7 @@ class RepostView extends StatelessWidget {
                             width: AppSize.appSize32,
                           ),
                         ),
-                        const Column(
+                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
@@ -115,29 +116,29 @@ class RepostView extends StatelessWidget {
                                 fontSize: AppSize.appSize12,
                                 fontWeight: FontWeight.w600,
                                 fontFamily: AppFont.appFontSemiBold,
-                                color: AppColor.secondaryColor,
+                                color: themedColor(Get.context!, (c) => c.secondaryColor),
                               ),
                             ),
                             Text(
-                              AppString.india,
+                              AppString.daressalaam,
                               style: TextStyle(
                                 fontSize: AppSize.appSize12,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AppFont.appFontRegular,
-                                color: AppColor.text2Color,
+                                color: themedColor(Get.context!, (c) => c.text2Color),
                               ),
                             ),
                           ],
                         ),
                       ],
                     ),
-                    const Text(
+                     Text(
                       AppString.days9,
                       style: TextStyle(
                         fontSize: AppSize.appSize12,
                         fontWeight: FontWeight.w400,
                         fontFamily: AppFont.appFontRegular,
-                        color: AppColor.text1Color,
+                        color: themedColor(Get.context!, (c) => c.text1Color),
                       ),
                     ),
                   ],
@@ -154,13 +155,13 @@ class RepostView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: AppSize.appSize12),
                   child: RichText(
-                    text: const TextSpan(
+                    text:  TextSpan(
                       text: AppString.davidMorelID,
                       style: TextStyle(
                         fontSize: AppSize.appSize12,
                         fontWeight: FontWeight.w700,
                         fontFamily: AppFont.appFontBold,
-                        color: AppColor.secondaryColor,
+                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                       ),
                       children: [
                         TextSpan(
@@ -169,7 +170,7 @@ class RepostView extends StatelessWidget {
                             fontSize: AppSize.appSize12,
                             fontWeight: FontWeight.w400,
                             fontFamily: AppFont.appFontRegular,
-                            color: AppColor.secondaryColor,
+                            color: themedColor(Get.context!, (c) => c.secondaryColor),
                           ),
                         ),
                       ],
@@ -186,23 +187,23 @@ class RepostView extends StatelessWidget {
               width: AppSize.appSize32,
             ),
             title: TextFormField(
-              cursorColor: AppColor.secondaryColor,
+              cursorColor: themedColor(Get.context!, (c) => c.secondaryColor),
               controller: repostController.commentsController,
               textInputAction: TextInputAction.done,
-              style: const TextStyle(
+              style:  TextStyle(
                 fontSize: AppSize.appSize14,
                 fontWeight: FontWeight.w400,
                 fontFamily: AppFont.appFontSemiBold,
-                color: AppColor.secondaryColor,
+                color: themedColor(Get.context!, (c) => c.secondaryColor),
               ),
-              decoration: const InputDecoration(
+              decoration:  InputDecoration(
                 contentPadding: EdgeInsets.only(bottom: AppSize.appSize4),
                 hintText: AppString.addComments,
                 hintStyle: TextStyle(
                   fontSize: AppSize.appSize14,
                   fontWeight: FontWeight.w400,
                   fontFamily: AppFont.appFontRegular,
-                  color: AppColor.text2Color,
+                  color: themedColor(Get.context!, (c) => c.text2Color),
                 ),
                 border: UnderlineInputBorder(
                   borderSide: BorderSide.none,

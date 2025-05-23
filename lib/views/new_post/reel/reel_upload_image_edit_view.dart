@@ -11,6 +11,7 @@ import '../../../config/app_font.dart';
 import '../../../config/app_icon.dart';
 import '../../../config/app_size.dart';
 import '../../../config/app_string.dart';
+import '../../../helpers/theme_helper.dart';
 import '../../../routes/app_routes.dart';
 
 class ReelUploadImageEditView extends StatelessWidget {
@@ -22,7 +23,7 @@ class ReelUploadImageEditView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       appBar: _appBar(),
       body: _body(),
     );
@@ -31,7 +32,7 @@ class ReelUploadImageEditView extends StatelessWidget {
   //Reel Upload Image Edit content
   _appBar() {
     return AppBar(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       leading: Padding(
         padding: EdgeInsets.only(
           left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize20,
@@ -65,14 +66,14 @@ class ReelUploadImageEditView extends StatelessWidget {
               color: AppColor.primaryColor,
               borderRadius: BorderRadius.circular(AppSize.appSize66),
             ),
-            child: const Center(
+            child:  Center(
               child: Text(
                 AppString.buttonTextNext,
                 style: TextStyle(
                   fontSize: AppSize.appSize14,
                   fontWeight: FontWeight.w600,
                   fontFamily: AppFont.appFontSemiBold,
-                  color: AppColor.secondaryColor,
+                  color: themedColor(Get.context!, (c) => c.secondaryColor),
                 ),
               ),
             ),

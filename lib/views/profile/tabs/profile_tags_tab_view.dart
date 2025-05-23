@@ -7,6 +7,7 @@ import 'package:prime_social_media_flutter_ui_kit/routes/app_routes.dart';
 import '../../../../config/app_icon.dart';
 import '../../../../config/app_size.dart';
 import '../../../config/app_color.dart';
+import '../../../helpers/theme_helper.dart';
 import '../../widget/home/post_view_dailog.dart';
 
 class ProfileTagsTabView extends StatelessWidget {
@@ -15,8 +16,8 @@ class ProfileTagsTabView extends StatelessWidget {
   ProfileController profileController = Get.put(ProfileController());
 
   void goToTab(BuildContext context, int tabIndex) {
-    bottomBarController.changeSelectedIndex(context, tabIndex);
-    Get.toNamed(AppRoutes.bottomBarView);
+    buyerController.changeSelectedIndex(context, tabIndex);
+    Get.toNamed(AppRoutes.buyerHomeView);
   }
 
   @override
@@ -46,7 +47,7 @@ class ProfileTagsTabView extends StatelessWidget {
               } else {
                 showDialog(
                   context: context,
-                  barrierColor: AppColor.backgroundColor.withOpacity(AppSize.appSizePoint7),
+                  barrierColor: themedColor(Get.context!, (c) => c.backgroundColor).withOpacity(AppSize.appSizePoint7),
                   builder: (context) {
                     return PostViewDialog(imageUrl: profileController.postsList[index]);
                   },

@@ -8,6 +8,8 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_size.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/profile/edit_profile_controller.dart';
 
+import '../../../helpers/theme_helper.dart';
+
 class SelectGenderPopup extends StatelessWidget {
   final Function(String) onGenderSelected;
   SelectGenderPopup({super.key, required this.onGenderSelected});
@@ -25,25 +27,25 @@ class SelectGenderPopup extends StatelessWidget {
             right: AppSize.appSize46,
           ),
           child: Container(
-            padding: const EdgeInsets.all(AppSize.appSize14),
+            padding:  EdgeInsets.all(AppSize.appSize14),
             width: AppSize.appSize298,
             height: AppSize.appSize220,
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
-              color: AppColor.backgroundColor,
+              color: themedColor(Get.context!, (c) => c.backgroundColor),
               borderRadius: BorderRadius.circular(AppSize.appSize12),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                 Text(
                   AppString.selectGender,
                   style: TextStyle(
                     fontSize: AppSize.appSize16,
                     fontWeight: FontWeight.w600,
                     fontFamily: AppFont.appFontSemiBold,
-                    color: AppColor.secondaryColor,
+                    color: themedColor(Get.context!, (c) => c.secondaryColor),
                   ),
                 ),
                 ListView.builder(
@@ -61,17 +63,17 @@ class SelectGenderPopup extends StatelessWidget {
                         padding: const EdgeInsets.only(left: AppSize.appSize14),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(AppSize.appSize12),
-                          color: editProfileController.selectedGenderIndex.value == index ? AppColor.cardBackgroundColor : AppColor.transparentColor,
+                          color: editProfileController.selectedGenderIndex.value == index ? themedColor(Get.context!, (c) => c.cardBackgroundColor) : AppColor.transparentColor,
                         ),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
                             editProfileController.genderList[index],
-                            style: const TextStyle(
+                            style:  TextStyle(
                               fontSize: AppSize.appSize14,
                               fontWeight: FontWeight.w400,
                               fontFamily: AppFont.appFontRegular,
-                              color: AppColor.secondaryColor,
+                              color: themedColor(Get.context!, (c) => c.secondaryColor),
                             ),
                           ),
                         ),
@@ -82,7 +84,7 @@ class SelectGenderPopup extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(right: AppSize.appSize16),
                       child: Text(
                         AppString.cancelText,
@@ -90,7 +92,7 @@ class SelectGenderPopup extends StatelessWidget {
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w600,
                           fontFamily: AppFont.appFontSemiBold,
-                          color: AppColor.text1Color,
+                          color: themedColor(Get.context!, (c) => c.text1Color),
                         ),
                       ),
                     ),

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_size.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
-import 'package:prime_social_media_flutter_ui_kit/controller/bottom_bar/bottom_bar_controller.dart';
+import 'package:prime_social_media_flutter_ui_kit/controller/bottom_bar/buyer_controller.dart';
 
 import '../../model/highlight_model.dart';
 
-BottomBarController bottomBarController = Get.put(BottomBarController());
+BuyerController buyerController = Get.put(BuyerController());
 
 class ProfileController extends GetxController with GetSingleTickerProviderStateMixin {
    TabController? tabController;

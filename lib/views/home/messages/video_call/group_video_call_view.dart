@@ -8,6 +8,7 @@ import '../../../../config/app_color.dart';
 import '../../../../config/app_icon.dart';
 import '../../../../config/app_image.dart';
 import '../../../../config/app_size.dart';
+import '../../../../helpers/theme_helper.dart';
 
 class GroupVideoCallView extends StatelessWidget {
   GroupVideoCallView({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class GroupVideoCallView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         body: GestureDetector(
           onTap: () {
 
@@ -111,7 +112,7 @@ class GroupVideoCallView extends StatelessWidget {
                   width: AppSize.appSize34,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(AppSize.appSize65),
-                    color: AppColor.backgroundColor.withOpacity(AppSize.appSizePoint5),
+                    color: themedColor(Get.context!, (c) => c.backgroundColor).withOpacity(AppSize.appSizePoint5),
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

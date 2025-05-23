@@ -6,10 +6,12 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_font.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_size.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/home/user_action_controller.dart';
 
+import '../../../helpers/theme_helper.dart';
+
 userActionBottomSheet(BuildContext context) {
   UserActionController userActionController = Get.put(UserActionController());
   return showModalBottomSheet(
-    backgroundColor: AppColor.backgroundColor,
+    backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
     shape: const OutlineInputBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(AppSize.appSize12),
@@ -30,12 +32,12 @@ userActionBottomSheet(BuildContext context) {
         padding: const EdgeInsets.only(
           top: AppSize.appSize12,
         ),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(AppSize.appSize12),
             topRight: Radius.circular(AppSize.appSize12),
           ),
-          color: AppColor.backgroundColor,
+          color: themedColor(Get.context!, (c) => c.backgroundColor),
         ),
         child: Column(
           children: [
@@ -44,7 +46,7 @@ userActionBottomSheet(BuildContext context) {
               height: AppSize.appSize2,
               margin: const EdgeInsets.only(bottom: AppSize.appSize20),
               decoration: BoxDecoration(
-                color: AppColor.lineColor,
+                color: themedColor(Get.context!, (c) => c.lineColor),
                 borderRadius: BorderRadius.circular(
                   AppSize.appSize6,
                 ),
@@ -65,7 +67,7 @@ userActionBottomSheet(BuildContext context) {
                       bottom: AppSize.appSize8, left: AppSize.appSize14, right: AppSize.appSize14,
                     ),
                     decoration: BoxDecoration(
-                      color: userActionController.isSelected.value == index ? AppColor.cardBackgroundColor : AppColor.transparentColor,
+                      color: userActionController.isSelected.value == index ? themedColor(Get.context!, (c) => c.cardBackgroundColor) : AppColor.transparentColor,
                       borderRadius: BorderRadius.circular(AppSize.appSize12),
                     ),
                     child: Padding(
@@ -74,11 +76,11 @@ userActionBottomSheet(BuildContext context) {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           userActionController.userActionsList[index],
-                          style: const TextStyle(
+                          style:  TextStyle(
                             fontSize: AppSize.appSize14,
                             fontWeight: FontWeight.w600,
                             fontFamily: AppFont.appFontSemiBold,
-                            color: AppColor.secondaryColor,
+                            color: themedColor(Get.context!, (c) => c.secondaryColor),
                           ),
                         ),
                       ),
