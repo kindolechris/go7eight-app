@@ -11,6 +11,7 @@ import '../../../../config/app_icon.dart';
 import '../../../../config/app_image.dart';
 import '../../../../config/app_size.dart';
 import '../../../../config/app_string.dart';
+import '../../../../helpers/theme_helper.dart';
 
 class DuoCallView extends StatelessWidget {
   DuoCallView({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class DuoCallView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       body: GestureDetector(
         onTap: () {
           Get.toNamed(AppRoutes.multipleCallView);
@@ -65,7 +66,7 @@ class DuoCallView extends StatelessWidget {
                                 width: AppSize.appSize100,
                               ),
                             ),
-                            const Padding(
+                             Padding(
                               padding: EdgeInsets.only(top: AppSize.appSize24),
                               child: Text(
                                 AppString.eleanorPena,
@@ -73,7 +74,7 @@ class DuoCallView extends StatelessWidget {
                                   fontSize: AppSize.appSize20,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: AppFont.appFontSemiBold,
-                                  color: AppColor.secondaryColor,
+                                  color: themedColor(Get.context!, (c) => c.secondaryColor),
                                 ),
                               ),
                             ),
@@ -96,7 +97,7 @@ class DuoCallView extends StatelessWidget {
                       width: AppSize.appSize100,
                     ),
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.only(top: AppSize.appSize24),
                     child: Text(
                       AppString.eleanorPena,
@@ -104,7 +105,7 @@ class DuoCallView extends StatelessWidget {
                         fontSize: AppSize.appSize20,
                         fontWeight: FontWeight.w600,
                         fontFamily: AppFont.appFontSemiBold,
-                        color: AppColor.secondaryColor,
+                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                       ),
                     ),
                   ),

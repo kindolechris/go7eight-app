@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../config/app_color.dart';
+import '../../helpers/theme_helper.dart';
 
 enum CaptureMode { photo, video }
 
@@ -139,10 +140,10 @@ class CreateReelController extends GetxController {
 
   Widget buildCameraPreview() {
     if (isSwapping.value) {
-      return Container(color: AppColor.backgroundColor);
+      return Container(color: themedColor(Get.context!, (c) => c.backgroundColor));
     } else {
       return Obx(() {
-        return isCameraInitialized.value ? CameraPreview(controller!) : Container(color: AppColor.backgroundColor);
+        return isCameraInitialized.value ? CameraPreview(controller!) : Container(color: themedColor(Get.context!, (c) => c.backgroundColor));
       });
     }
   }

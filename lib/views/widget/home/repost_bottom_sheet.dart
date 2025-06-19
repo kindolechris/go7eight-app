@@ -8,11 +8,12 @@ import '../../../config/app_font.dart';
 import '../../../config/app_icon.dart';
 import '../../../config/app_size.dart';
 import '../../../config/app_string.dart';
+import '../../../helpers/theme_helper.dart';
 
 repostBottomSheet(BuildContext context) {
   LanguageController languageController = Get.put(LanguageController());
   return showModalBottomSheet(
-    backgroundColor: AppColor.backgroundColor,
+    backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
     shape: const OutlineInputBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(AppSize.appSize12),
@@ -33,12 +34,12 @@ repostBottomSheet(BuildContext context) {
         padding: const EdgeInsets.only(
           top: AppSize.appSize12,
         ),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(AppSize.appSize12),
             topRight: Radius.circular(AppSize.appSize12),
           ),
-          color: AppColor.backgroundColor,
+          color: themedColor(Get.context!, (c) => c.backgroundColor),
         ),
         child: Column(
           children: [
@@ -47,7 +48,7 @@ repostBottomSheet(BuildContext context) {
               height: AppSize.appSize2,
               margin: const EdgeInsets.only(bottom: AppSize.appSize24),
               decoration: BoxDecoration(
-                color: AppColor.lineColor,
+                color: themedColor(Get.context!, (c) => c.lineColor),
                 borderRadius: BorderRadius.circular(
                   AppSize.appSize6,
                 ),
@@ -82,17 +83,17 @@ repostBottomSheet(BuildContext context) {
                                   left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize8 : AppSize.appSize0,
                                   right: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize8,
                                 ),
-                                child: const Text(
+                                child:  Text(
                                   AppString.repost,
                                   style: TextStyle(
                                     fontSize: AppSize.appSize16,
                                     fontWeight: FontWeight.w600,
                                     fontFamily: AppFont.appFontSemiBold,
-                                    color: AppColor.secondaryColor,
+                                    color: themedColor(Get.context!, (c) => c.secondaryColor),
                                   ),
                                 ),
                               ),
-                              const Padding(
+                               Padding(
                                 padding: EdgeInsets.only(top: AppSize.appSize2),
                                 child: Text(
                                   AppString.shareThisPostWithYourAudience,
@@ -100,7 +101,7 @@ repostBottomSheet(BuildContext context) {
                                     fontSize: AppSize.appSize14,
                                     fontWeight: FontWeight.w400,
                                     fontFamily: AppFont.appFontRegular,
-                                    color: AppColor.text2Color,
+                                    color: themedColor(Get.context!, (c) => c.text2Color),
                                   ),
                                 ),
                               ),
@@ -136,17 +137,17 @@ repostBottomSheet(BuildContext context) {
                                       left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize8 : AppSize.appSize0,
                                       right: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize8,
                                     ),
-                                    child: const Text(
+                                    child:  Text(
                                       AppString.repostWithQuote,
                                       style: TextStyle(
                                         fontSize: AppSize.appSize16,
                                         fontWeight: FontWeight.w600,
                                         fontFamily: AppFont.appFontSemiBold,
-                                        color: AppColor.secondaryColor,
+                                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                                       ),
                                     ),
                                   ),
-                                  const Padding(
+                                   Padding(
                                     padding: EdgeInsets.only(top: AppSize.appSize2),
                                     child: Text(
                                       AppString.beforeSharingThisPost,
@@ -154,7 +155,7 @@ repostBottomSheet(BuildContext context) {
                                         fontSize: AppSize.appSize14,
                                         fontWeight: FontWeight.w400,
                                         fontFamily: AppFont.appFontRegular,
-                                        color: AppColor.text2Color,
+                                        color: themedColor(Get.context!, (c) => c.text2Color),
                                       ),
                                     ),
                                   ),

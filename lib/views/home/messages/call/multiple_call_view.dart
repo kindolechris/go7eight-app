@@ -9,6 +9,7 @@ import '../../../../config/app_color.dart';
 import '../../../../config/app_icon.dart';
 import '../../../../config/app_image.dart';
 import '../../../../config/app_size.dart';
+import '../../../../helpers/theme_helper.dart';
 
 class MultipleCallView extends StatelessWidget {
   MultipleCallView({Key? key}) : super(key: key);
@@ -18,9 +19,9 @@ class MultipleCallView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       appBar: AppBar(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         leading: Padding(
           padding: EdgeInsets.only(
             left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize20,
@@ -55,7 +56,7 @@ class MultipleCallView extends StatelessWidget {
             return Container(
               width: AppSize.appSize165,
               decoration: BoxDecoration(
-                color: AppColor.cardBackgroundColor,
+                color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                 borderRadius: BorderRadius.circular(AppSize.appSize12),
               ),
               child: Column(
@@ -65,7 +66,7 @@ class MultipleCallView extends StatelessWidget {
                     AppImage.comment2,
                     width: AppSize.appSize52,
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.only(top: AppSize.appSize9),
                     child: Text(
                       AppString.robertFox,
@@ -73,7 +74,7 @@ class MultipleCallView extends StatelessWidget {
                         fontSize: AppSize.appSize16,
                         fontWeight: FontWeight.w400,
                         fontFamily: AppFont.appFontRegular,
-                        color: AppColor.secondaryColor,
+                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                       ),
                     ),
                   ),

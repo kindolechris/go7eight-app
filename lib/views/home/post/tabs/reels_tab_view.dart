@@ -10,6 +10,7 @@ import 'package:prime_social_media_flutter_ui_kit/controller/home/all_post_contr
 import 'package:prime_social_media_flutter_ui_kit/routes/app_routes.dart';
 
 import '../../../../config/app_size.dart';
+import '../../../../helpers/theme_helper.dart';
 
 class ReelsTabView extends StatelessWidget {
   ReelsTabView({Key? key}) : super(key: key);
@@ -69,11 +70,11 @@ class ReelsTabView extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: AppSize.appSize3),
                         child: Text(
                           allPostController.reelsViewList[index],
-                          style: const TextStyle(
+                          style:  TextStyle(
                             fontSize: AppSize.appSize12,
                             fontWeight: FontWeight.w600,
                             fontFamily: AppFont.appFontSemiBold,
-                            color: AppColor.secondaryColor,
+                            color: themedColor(Get.context!, (c) => c.secondaryColor),
                           ),
                         ),
                       ),

@@ -9,6 +9,7 @@ import '../../../../config/app_color.dart';
 import '../../../../config/app_icon.dart';
 import '../../../../config/app_image.dart';
 import '../../../../config/app_size.dart';
+import '../../../../helpers/theme_helper.dart';
 
 class VideoCallView extends StatelessWidget {
   VideoCallView({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class VideoCallView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       body: GestureDetector(
         onTap: () {
           Get.toNamed(AppRoutes.groupVideoCallView);
@@ -107,7 +108,7 @@ class VideoCallView extends StatelessWidget {
                 width: AppSize.appSize34,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(AppSize.appSize65),
-                  color: AppColor.backgroundColor.withOpacity(AppSize.appSizePoint5),
+                  color: themedColor(Get.context!, (c) => c.backgroundColor).withOpacity(AppSize.appSizePoint5),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -6,6 +6,8 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_color.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
 import 'package:story_view/story_view.dart';
 
+import '../../../../helpers/theme_helper.dart';
+
 class StoryFullView extends StatelessWidget {
   StoryFullView({super.key});
 
@@ -15,7 +17,7 @@ class StoryFullView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         body: _buildHighlights(),
       ),
     );

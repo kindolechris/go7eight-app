@@ -11,6 +11,7 @@ import '../../../config/app_icon.dart';
 import '../../../config/app_image.dart';
 import '../../../config/app_size.dart';
 import '../../../config/app_string.dart';
+import '../../../helpers/theme_helper.dart';
 
 class ReelCaptureView extends StatelessWidget {
   ReelCaptureView({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class ReelCaptureView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         body: _body(context),
       ),
     );
@@ -36,7 +37,7 @@ class ReelCaptureView extends StatelessWidget {
             children: [
               Container(
                 height: MediaQuery.of(context).size.height,
-                color: AppColor.backgroundColor,
+                color: themedColor(Get.context!, (c) => c.backgroundColor),
                 child: Image.asset(
                   AppImage.reelVideoImage,
                   fit: BoxFit.cover,
@@ -74,17 +75,17 @@ class ReelCaptureView extends StatelessWidget {
                           height: AppSize.appSize34,
                           width: AppSize.appSize64,
                           decoration: BoxDecoration(
-                            color: AppColor.text1Color,
+                            color: themedColor(Get.context!, (c) => c.text1Color),
                             borderRadius: BorderRadius.circular(AppSize.appSize66),
                           ),
-                          child: const Center(
+                          child:  Center(
                             child: Text(
                               AppString.buttonTextEdit,
                               style: TextStyle(
                                 fontSize: AppSize.appSize14,
                                 fontWeight: FontWeight.w600,
                                 fontFamily: AppFont.appFontSemiBold,
-                                color: AppColor.secondaryColor,
+                                color: themedColor(Get.context!, (c) => c.secondaryColor),
                               ),
                             ),
                           ),
@@ -101,14 +102,14 @@ class ReelCaptureView extends StatelessWidget {
                             color: AppColor.primaryColor,
                             borderRadius: BorderRadius.circular(AppSize.appSize66),
                           ),
-                          child: const Center(
+                          child:  Center(
                             child: Text(
                               AppString.buttonTextNext,
                               style: TextStyle(
                                 fontSize: AppSize.appSize14,
                                 fontWeight: FontWeight.w600,
                                 fontFamily: AppFont.appFontSemiBold,
-                                color: AppColor.secondaryColor,
+                                color: themedColor(Get.context!, (c) => c.secondaryColor),
                               ),
                             ),
                           ),

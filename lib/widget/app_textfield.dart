@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import '../config/app_color.dart';
 import '../config/app_font.dart';
 import '../config/app_size.dart';
+import '../helpers/theme_helper.dart';
 
 class AppTextField extends StatelessWidget {
   TextInputType? keyboardType;
@@ -50,19 +52,19 @@ class AppTextField extends StatelessWidget {
     return Container(
       height: AppSize.appSize64,
       decoration: BoxDecoration(
-        color: AppColor.cardBackgroundColor,
+        color: themedColor(Get.context!, (c) => c.backgroundColor),
         borderRadius: BorderRadius.circular(AppSize.appSize12),
-        border: Border.all(color: AppColor.borderColor, width: AppSize.appSizePoint7),
+        border: Border.all(color: themedColor(Get.context!, (c) => c.borderColor), width: AppSize.appSizePoint7),
       ),
       child: TextFormField(
         controller: controller,
         keyboardType: keyboardType,
         readOnly: readOnly ?? false,
-        style: const TextStyle(
+        style:  TextStyle(
           fontSize: AppSize.appSize16,
           fontWeight: FontWeight.w600,
           fontFamily: AppFont.appFontSemiBold,
-          color: AppColor.secondaryColor,
+          color: themedColor(Get.context!, (c) => c.secondaryColor),
         ),
         cursorColor: cursorColor,
         focusNode: focusNode,
@@ -72,17 +74,17 @@ class AppTextField extends StatelessWidget {
         inputFormatters: inputFormatters,
         decoration: InputDecoration(
           labelText: labelText,
-          labelStyle: const TextStyle(
+          labelStyle:  TextStyle(
             fontSize: AppSize.appSize16,
             fontWeight: FontWeight.w600,
             fontFamily: AppFont.appFontSemiBold,
-            color: AppColor.text1Color,
+            color: themedColor(Get.context!, (c) => c.text1Color),
           ),
-          floatingLabelStyle: const TextStyle(
+          floatingLabelStyle:  TextStyle(
             fontSize: AppSize.appSize14,
             fontWeight: FontWeight.w400,
             fontFamily: AppFont.appFontRegular,
-            color: AppColor.text1Color,
+            color: themedColor(Get.context!, (c) => c.text1Color),
           ),
           floatingLabelBehavior: FloatingLabelBehavior.auto,
           contentPadding: const EdgeInsets.only(
@@ -106,6 +108,7 @@ class AppTextField extends StatelessWidget {
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(AppSize.appSize12),
           ),
+          
           suffixIcon: suffixIcon,
           suffixIconConstraints: suffixIconConstraints,
           suffixIconColor: suffixIconColor,

@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+// import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/profile/settings_options/language_controller.dart';
@@ -10,6 +10,8 @@ import '../../../config/app_font.dart';
 import '../../../config/app_icon.dart';
 import '../../../config/app_size.dart';
 import '../../../config/app_string.dart';
+import '../../../helpers/theme_helper.dart';
+import 'scan_screen.dart';
 
 class QRCodeView extends StatelessWidget {
   QRCodeView({Key? key}) : super(key: key);
@@ -19,7 +21,7 @@ class QRCodeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       appBar: _appBar(),
       body: _body(context),
     );
@@ -28,35 +30,45 @@ class QRCodeView extends StatelessWidget {
   //QR Code content
   _appBar() {
     return AppBar(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       scrolledUnderElevation: AppSize.appSize0,
       automaticallyImplyLeading: false,
       title: Padding(
-        padding: const EdgeInsets.only(top: AppSize.appSize12, left: AppSize.appSize6),
+        padding: const EdgeInsets.only(
+            top: AppSize.appSize12, left: AppSize.appSize6),
         child: Row(
           children: [
             Padding(
               padding: EdgeInsets.only(
-                left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize12 : AppSize.appSize0,
-                right: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize12,
+                left: languageController.selectedLanguageIndex.value ==
+                        AppSize.size2
+                    ? AppSize.appSize12
+                    : AppSize.appSize0,
+                right: languageController.selectedLanguageIndex.value ==
+                        AppSize.size2
+                    ? AppSize.appSize0
+                    : AppSize.appSize12,
               ),
               child: GestureDetector(
                 onTap: () {
                   Get.back();
                 },
                 child: Image.asset(
-                  languageController.selectedLanguageIndex.value == AppSize.size2 ? AppIcon.backRight : AppIcon.back,
+                  languageController.selectedLanguageIndex.value ==
+                          AppSize.size2
+                      ? AppIcon.backRight
+                      : AppIcon.back,
                   width: AppSize.appSize24,
                 ),
               ),
             ),
-            const Text(
+             Text(
               AppString.qrCode,
               style: TextStyle(
                 fontSize: AppSize.appSize20,
                 fontWeight: FontWeight.w600,
                 fontFamily: AppFont.appFontSemiBold,
-                color: AppColor.secondaryColor,
+                color: themedColor(Get.context!, (c) => c.secondaryColor),
               ),
             ),
           ],
@@ -65,17 +77,23 @@ class QRCodeView extends StatelessWidget {
       actions: [
         Padding(
           padding: EdgeInsets.only(
-            left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize20 : AppSize.appSize0,
-            right: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize20,
+            left:
+                languageController.selectedLanguageIndex.value == AppSize.size2
+                    ? AppSize.appSize20
+                    : AppSize.appSize0,
+            right:
+                languageController.selectedLanguageIndex.value == AppSize.size2
+                    ? AppSize.appSize0
+                    : AppSize.appSize20,
             top: AppSize.appSize12,
           ),
           child: GestureDetector(
             onTap: () {
               Fluttertoast.showToast(
                 msg: AppString.qrScanned,
-                backgroundColor: AppColor.cardBackgroundColor,
+                backgroundColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                 fontSize: AppSize.appSize14,
-                textColor: AppColor.secondaryColor,
+                textColor: themedColor(Get.context!, (c) => c.secondaryColor),
                 toastLength: Toast.LENGTH_SHORT,
                 gravity: ToastGravity.BOTTOM,
               );
@@ -95,7 +113,8 @@ class QRCodeView extends StatelessWidget {
 
   _body(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: AppSize.appSize38, right: AppSize.appSize38),
+      padding: const EdgeInsets.only(
+          left: AppSize.appSize38, right: AppSize.appSize38),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -105,7 +124,7 @@ class QRCodeView extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: AppSize.appSize32),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppSize.appSize12),
-              color: AppColor.cardBackgroundColor,
+              color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
             ),
             child: Center(
               child: Image.asset(
@@ -124,25 +143,25 @@ class QRCodeView extends StatelessWidget {
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.BOTTOM,
                       timeInSecForIosWeb: AppSize.size1,
-                      backgroundColor: AppColor.cardBackgroundColor,
-                      textColor: AppColor.secondaryColor,
+                      backgroundColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
+                      textColor: themedColor(Get.context!, (c) => c.secondaryColor),
                       fontSize: AppSize.appSize14,
                     );
                   },
                   child: Container(
                     height: AppSize.appSize64,
                     decoration: BoxDecoration(
-                      color: AppColor.cardBackgroundColor,
+                      color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                       borderRadius: BorderRadius.circular(AppSize.appSize12),
                     ),
-                    child: const Center(
+                    child:  Center(
                       child: Text(
                         AppString.shareProfile,
                         style: TextStyle(
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.secondaryColor,
+                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                       ),
                     ),
@@ -155,9 +174,9 @@ class QRCodeView extends StatelessWidget {
                   onTap: () {
                     Fluttertoast.showToast(
                       msg: AppString.linkCopied,
-                      backgroundColor: AppColor.cardBackgroundColor,
+                      backgroundColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                       fontSize: AppSize.appSize14,
-                      textColor: AppColor.secondaryColor,
+                      textColor: themedColor(Get.context!, (c) => c.secondaryColor),
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.BOTTOM,
                     );
@@ -165,17 +184,17 @@ class QRCodeView extends StatelessWidget {
                   child: Container(
                     height: AppSize.appSize64,
                     decoration: BoxDecoration(
-                      color: AppColor.cardBackgroundColor,
+                      color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                       borderRadius: BorderRadius.circular(AppSize.appSize12),
                     ),
-                    child: const Center(
+                    child:  Center(
                       child: Text(
                         AppString.copyLink,
                         style: TextStyle(
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.secondaryColor,
+                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                       ),
                     ),
@@ -189,14 +208,29 @@ class QRCodeView extends StatelessWidget {
     );
   }
 
+  // Future<void> _scanBarcode() async {
+  //   String barcodeScanResult = await FlutterBarcodeScanner.scanBarcode(
+  //     AppString.colorString,
+  //     AppString.cancelString,
+  //     true,
+  //     ScanMode.BARCODE,
+  //   );
+
+  //   print(barcodeScanResult);
+
+  // }
+
   Future<void> _scanBarcode() async {
-    String barcodeScanResult = await FlutterBarcodeScanner.scanBarcode(
-      AppString.colorString,
-      AppString.cancelString,
-      true,
-      ScanMode.BARCODE,
+    final result = await Navigator.push(
+      Get.context!,
+      MaterialPageRoute(builder: (context) => const BarcodeScannerPage()),
     );
 
-    print(barcodeScanResult);
+    if (result != null) {
+      print('Scanned barcode: $result');
+      // Do something with the result, like save or display
+    } else {
+      print('Scan cancelled or failed');
+    }
   }
 }

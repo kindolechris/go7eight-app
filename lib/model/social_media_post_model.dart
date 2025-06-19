@@ -11,6 +11,8 @@ class SocialMediaPostModel {
   final String postDescription;
   final bool showTagUserIcon;
   final bool showVolumeIcon;
+  final bool verifiedUserIcon;
+  final bool showActionsOnImage;
 
   SocialMediaPostModel({
     required this.username,
@@ -22,20 +24,24 @@ class SocialMediaPostModel {
     required this.postDescription,
     this.showTagUserIcon = false,
     this.showVolumeIcon = false,
+    this.verifiedUserIcon = false,
+    this.showActionsOnImage = false,
   });
 }
 
 List<SocialMediaPostModel> posts = [
   SocialMediaPostModel(
     username: AppString.davidMorel,
-    location: AppString.india,
+    location: AppString.daressalaam,
     timeAgo: AppString.min33,
     profileImage: AppImage.profile1,
     profileID: AppString.davidMorelID,
-    postImage: AppImage.post1,
+    postImage: AppImage.post2,
     postDescription: AppString.loremString,
     showTagUserIcon: true,
     showVolumeIcon: true,
+    verifiedUserIcon: false,
+    showActionsOnImage: false,
   ),
   SocialMediaPostModel(
     username: AppString.rojModel,
@@ -43,9 +49,11 @@ List<SocialMediaPostModel> posts = [
     timeAgo: AppString.min2,
     profileImage: AppImage.profile2,
     profileID: AppString.rojModelID,
-    postImage: AppImage.post2,
+    postImage: AppImage.reelVideoImage,
     postDescription: AppString.loremString,
     showTagUserIcon: false,
     showVolumeIcon: true,
+    verifiedUserIcon: true,
+    showActionsOnImage: true,
   ),
 ];

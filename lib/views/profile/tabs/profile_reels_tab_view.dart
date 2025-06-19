@@ -9,6 +9,7 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_icon.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/profile/profile_controller.dart';
 import 'package:prime_social_media_flutter_ui_kit/routes/app_routes.dart';
 import '../../../../config/app_size.dart';
+import '../../../helpers/theme_helper.dart';
 
 class ProfileReelsTabView extends StatelessWidget {
   ProfileReelsTabView({Key? key}) : super(key: key);
@@ -16,8 +17,8 @@ class ProfileReelsTabView extends StatelessWidget {
   ProfileController profileController = Get.put(ProfileController());
 
   void goToTab(BuildContext context, int tabIndex) {
-    bottomBarController.changeSelectedIndex(context, tabIndex);
-    Get.toNamed(AppRoutes.bottomBarView);
+    buyerController.changeSelectedIndex(context, tabIndex);
+    Get.toNamed(AppRoutes.buyerHomeView);
   }
 
   @override
@@ -78,11 +79,11 @@ class ProfileReelsTabView extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: AppSize.appSize3),
                         child: Text(
                           profileController.reelsViewList[index],
-                          style: const TextStyle(
+                          style:  TextStyle(
                             fontSize: AppSize.appSize12,
                             fontWeight: FontWeight.w600,
                             fontFamily: AppFont.appFontSemiBold,
-                            color: AppColor.secondaryColor,
+                            color: themedColor(Get.context!, (c) => c.secondaryColor),
                           ),
                         ),
                       ),

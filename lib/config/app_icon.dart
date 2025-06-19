@@ -1,11 +1,14 @@
 class AppIcon {
   static const String calendar = "assets/icons/calendar.png";
+  static const String dashboard = "assets/icons/dashboard.png";
+  static const String dashboardFilled = "assets/icons/dashboardFilled.png";
   static const String eyeClose = "assets/icons/eyeClose.png";
   static const String eyeOpen = "assets/icons/eyeOpen.png";
   static const String done = "assets/icons/done.png";
   static const String back = "assets/icons/back.png";
   static const String message = "assets/icons/message.png";
   static const String search = "assets/icons/search.png";
+  static const String shoppingCart = "assets/icons/shoppingCart.png";
   static const String more = "assets/icons/more.png";
   static const String tagUser = "assets/icons/tagUser.png";
   static const String volume = "assets/icons/volume.png";
@@ -41,6 +44,8 @@ class AppIcon {
   static const String filter = "assets/icons/filter.png";
   static const String homeIcon = "assets/icons/homeIcon.png";
   static const String homeFillIcon = "assets/icons/homeFillIcon.png";
+  static const String historyIcon = "assets/icons/historyIcon.png";
+  static const String historyIconFill = "assets/icons/historyIconFill.png";
   static const String notificationIcon = "assets/icons/notificationIcon.png";
   static const String notificationFillIcon = "assets/icons/notificationFillIcon.png";
   static const String postIcon = "assets/icons/postIcon.png";

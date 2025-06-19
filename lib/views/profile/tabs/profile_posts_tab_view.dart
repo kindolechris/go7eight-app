@@ -6,6 +6,7 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_color.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/profile/profile_controller.dart';
 import 'package:prime_social_media_flutter_ui_kit/views/widget/home/post_view_dailog.dart';
 import '../../../../config/app_size.dart';
+import '../../../helpers/theme_helper.dart';
 
 class ProfilePostsTabView extends StatelessWidget {
   ProfilePostsTabView({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class ProfilePostsTabView extends StatelessWidget {
             onTap: () {
               showDialog(
                 context: context,
-                barrierColor: AppColor.backgroundColor.withOpacity(AppSize.appSizePoint7),
+                barrierColor: themedColor(Get.context!, (c) => c.backgroundColor).withOpacity(AppSize.appSizePoint7),
                 builder: (context) {
                   return PostViewDialog(imageUrl: profileController.postsList[index]);
                 },

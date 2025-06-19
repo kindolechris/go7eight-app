@@ -11,6 +11,8 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/profile/settings_options/language_controller.dart';
 import 'package:prime_social_media_flutter_ui_kit/routes/app_routes.dart';
 
+import '../../../../helpers/theme_helper.dart';
+
 class CallView extends StatelessWidget {
   CallView({Key? key}) : super(key: key);
 
@@ -19,7 +21,7 @@ class CallView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       body: GestureDetector(
         onTap: () {
           Get.toNamed(AppRoutes.callRingingView);
@@ -47,7 +49,7 @@ class CallView extends StatelessWidget {
                       width: AppSize.appSize100,
                     ),
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.only(top: AppSize.appSize24),
                     child: Text(
                       AppString.calling,
@@ -55,17 +57,17 @@ class CallView extends StatelessWidget {
                         fontSize: AppSize.appSize16,
                         fontWeight: FontWeight.w600,
                         fontFamily: AppFont.appFontSemiBold,
-                        color: AppColor.secondaryColor,
+                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                       ),
                     ),
                   ),
-                  const Text(
+                   Text(
                     AppString.eleanorPena,
                     style: TextStyle(
                       fontSize: AppSize.appSize20,
                       fontWeight: FontWeight.w600,
                       fontFamily: AppFont.appFontSemiBold,
-                      color: AppColor.secondaryColor,
+                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                     ),
                   ),
                 ],

@@ -1,9 +1,11 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../config/app_color.dart';
 import '../config/app_font.dart';
 import '../config/app_size.dart';
+import '../helpers/theme_helper.dart';
 
 class AppButton extends StatelessWidget {
   void Function() onPressed;
@@ -48,7 +50,7 @@ class AppButton extends StatelessWidget {
             fontSize: AppSize.appSize16,
             fontWeight: FontWeight.w600,
             fontFamily: AppFont.appFontSemiBold,
-            color: textColor ?? AppColor.secondaryColor,
+            color: Colors.white,
           ),
         ),
       ),

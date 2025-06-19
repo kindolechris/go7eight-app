@@ -2,11 +2,14 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_color.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_font.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_image.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_size.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
+
+import '../../../../helpers/theme_helper.dart';
 
 class ShareViewDialog extends StatelessWidget {
   const ShareViewDialog({super.key});
@@ -25,7 +28,7 @@ class ShareViewDialog extends StatelessWidget {
             padding: const EdgeInsets.only(left: AppSize.appSize14, right: AppSize.appSize14),
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
-              color: AppColor.cardBackgroundColor,
+              color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
               borderRadius: BorderRadius.circular(AppSize.appSize12),
             ),
             child: Row(
@@ -38,7 +41,7 @@ class ShareViewDialog extends StatelessWidget {
                       AppImage.document,
                       width: AppSize.appSize48,
                     ),
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(top: AppSize.appSize6),
                       child: Text(
                         AppString.document,
@@ -46,7 +49,7 @@ class ShareViewDialog extends StatelessWidget {
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.secondaryColor,
+                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                       ),
                     ),
@@ -59,7 +62,7 @@ class ShareViewDialog extends StatelessWidget {
                       AppImage.cameraShare,
                       width: AppSize.appSize48,
                     ),
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(top: AppSize.appSize6),
                       child: Text(
                         AppString.camera,
@@ -67,7 +70,7 @@ class ShareViewDialog extends StatelessWidget {
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.secondaryColor,
+                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                       ),
                     ),
@@ -80,7 +83,7 @@ class ShareViewDialog extends StatelessWidget {
                       AppImage.gallery,
                       width: AppSize.appSize48,
                     ),
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(top: AppSize.appSize6),
                       child: Text(
                         AppString.gallery,
@@ -88,7 +91,7 @@ class ShareViewDialog extends StatelessWidget {
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.secondaryColor,
+                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                       ),
                     ),
@@ -101,7 +104,7 @@ class ShareViewDialog extends StatelessWidget {
                       AppImage.poll,
                       width: AppSize.appSize48,
                     ),
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(top: AppSize.appSize6),
                       child: Text(
                         AppString.poll,
@@ -109,7 +112,7 @@ class ShareViewDialog extends StatelessWidget {
                           fontSize: AppSize.appSize14,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.secondaryColor,
+                          color: themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                       ),
                     ),

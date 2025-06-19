@@ -17,6 +17,7 @@ import 'package:prime_social_media_flutter_ui_kit/views/home/post/tabs/tags_tab_
 import 'package:prime_social_media_flutter_ui_kit/views/widget/home/user_action_bottom_sheet.dart';
 import '../../../config/app_icon.dart';
 import '../../../config/app_size.dart';
+import '../../../helpers/theme_helper.dart';
 
 class AllPostView extends StatelessWidget {
   AllPostView({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class AllPostView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       appBar: _appBar(context),
       body: _body(),
     );
@@ -36,7 +37,7 @@ class AllPostView extends StatelessWidget {
   //All post content
   _appBar(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       leading: Padding(
         padding: EdgeInsets.only(
           left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize20,
@@ -53,13 +54,13 @@ class AllPostView extends StatelessWidget {
         ),
       ),
       leadingWidth: AppSize.appSize44,
-      title: const Text(
+      title:  Text(
         AppString.eleanorPenaID,
         style: TextStyle(
           fontSize: AppSize.appSize20,
           fontWeight: FontWeight.w600,
           fontFamily: AppFont.appFontSemiBold,
-          color: AppColor.secondaryColor,
+          color: themedColor(Get.context!, (c) => c.secondaryColor),
         ),
       ),
       actions: [
@@ -117,7 +118,7 @@ class AllPostView extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            const Padding(
+                             Padding(
                               padding: EdgeInsets.only(bottom: AppSize.appSize18),
                               child: Text(
                                 AppString.eleanorPena,
@@ -125,7 +126,7 @@ class AllPostView extends StatelessWidget {
                                   fontSize: AppSize.appSize16,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: AppFont.appFontSemiBold,
-                                  color: AppColor.secondaryColor,
+                                  color: themedColor(Get.context!, (c) => c.secondaryColor),
                                 ),
                               ),
                             ),
@@ -159,17 +160,17 @@ class AllPostView extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(AppSize.appSize6),
                                           color: allPostController.isFollow.value
-                                              ? AppColor.cardBackgroundColor
+                                              ? themedColor(Get.context!, (c) => c.cardBackgroundColor)
                                               : AppColor.primaryColor,
                                         ),
                                         child: Center(
                                           child: Text(
                                             allPostController.isFollow.value ? AppString.following : AppString.follow,
-                                            style: const TextStyle(
+                                            style:  TextStyle(
                                               fontSize: AppSize.appSize14,
                                               fontWeight: FontWeight.w600,
                                               fontFamily: AppFont.appFontSemiBold,
-                                              color: AppColor.secondaryColor,
+                                              color: themedColor(Get.context!, (c) => c.secondaryColor),
                                             ),
                                           ),
                                         ),
@@ -182,8 +183,8 @@ class AllPostView extends StatelessWidget {
                                           toastLength: Toast.LENGTH_SHORT,
                                           gravity: ToastGravity.BOTTOM,
                                           timeInSecForIosWeb: AppSize.size1,
-                                          backgroundColor: AppColor.cardBackgroundColor,
-                                          textColor: AppColor.secondaryColor,
+                                          backgroundColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
+                                          textColor: themedColor(Get.context!, (c) => c.secondaryColor),
                                           fontSize: AppSize.appSize14,
                                         );
                                       },
@@ -192,16 +193,16 @@ class AllPostView extends StatelessWidget {
                                         height: AppSize.appSize32,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(AppSize.appSize6),
-                                          color: AppColor.cardBackgroundColor,
+                                          color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                                         ),
-                                        child: const Center(
+                                        child:  Center(
                                           child: Text(
                                             AppString.shareProfile,
                                             style: TextStyle(
                                               fontSize: AppSize.appSize14,
                                               fontWeight: FontWeight.w600,
                                               fontFamily: AppFont.appFontSemiBold,
-                                              color: AppColor.secondaryColor,
+                                              color: themedColor(Get.context!, (c) => c.secondaryColor),
                                             ),
                                           ),
                                         ),
@@ -214,8 +215,8 @@ class AllPostView extends StatelessWidget {
                                           toastLength: Toast.LENGTH_SHORT,
                                           gravity: ToastGravity.BOTTOM,
                                           timeInSecForIosWeb: AppSize.size1,
-                                          backgroundColor: AppColor.cardBackgroundColor,
-                                          textColor: AppColor.secondaryColor,
+                                          backgroundColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
+                                          textColor: themedColor(Get.context!, (c) => c.secondaryColor),
                                           fontSize: AppSize.appSize14,
                                         );
                                       },
@@ -224,7 +225,7 @@ class AllPostView extends StatelessWidget {
                                         height: AppSize.appSize32,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(AppSize.appSize6),
-                                          color: AppColor.cardBackgroundColor,
+                                          color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                                         ),
                                         child: Center(
                                           child: Image.asset(
@@ -238,14 +239,14 @@ class AllPostView extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            const Text(
+                             Text(
                               AppString.loremString5,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: AppSize.appSize14,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AppFont.appFontRegular,
-                                color: AppColor.secondaryColor,
+                                color: themedColor(Get.context!, (c) => c.secondaryColor),
                               ),
                             ),
                           ],
@@ -266,13 +267,13 @@ class AllPostView extends StatelessWidget {
                             allPostController.selectedTabIndex.value = val;
                           },
                           controller: allPostController.tabController,
-                          dividerColor: AppColor.backgroundColor,
-                          labelColor: AppColor.secondaryColor,
-                          labelStyle: const TextStyle(
-                            color: AppColor.secondaryColor,
+                          dividerColor: themedColor(Get.context!, (c) => c.backgroundColor),
+                          labelColor: themedColor(Get.context!, (c) => c.secondaryColor),
+                          labelStyle:  TextStyle(
+                            color: themedColor(Get.context!, (c) => c.secondaryColor),
                           ),
-                          unselectedLabelColor: AppColor.text1Color,
-                          indicatorColor: AppColor.secondaryColor,
+                          unselectedLabelColor: themedColor(Get.context!, (c) => c.text1Color),
+                          indicatorColor: themedColor(Get.context!, (c) => c.secondaryColor),
                           indicatorSize: TabBarIndicatorSize.tab,
                           indicatorWeight: AppSize.appSizePoint7,
                           isScrollable: false,
@@ -282,8 +283,8 @@ class AllPostView extends StatelessWidget {
                                 AppIcon.photos,
                                 width: AppSize.appSize22,
                                 color: allPostController.selectedTabIndex.value == 0
-                                    ? AppColor.secondaryColor
-                                    : AppColor.text1Color,
+                                    ? themedColor(Get.context!, (c) => c.secondaryColor)
+                                    : themedColor(Get.context!, (c) => c.text1Color),
                               ),
                             ),
                             Tab(
@@ -291,8 +292,8 @@ class AllPostView extends StatelessWidget {
                                 AppIcon.editComment,
                                 width: AppSize.appSize22,
                                 color: allPostController.selectedTabIndex.value == 1
-                                    ? AppColor.secondaryColor
-                                    : AppColor.text1Color,
+                                    ? themedColor(Get.context!, (c) => c.secondaryColor)
+                                    : themedColor(Get.context!, (c) => c.text1Color),
                               ),
                             ),
                             Tab(
@@ -300,8 +301,8 @@ class AllPostView extends StatelessWidget {
                                 AppIcon.reel,
                                 width: AppSize.appSize22,
                                 color: allPostController.selectedTabIndex.value == 2
-                                    ? AppColor.secondaryColor
-                                    : AppColor.text1Color,
+                                    ? themedColor(Get.context!, (c) => c.secondaryColor)
+                                    : themedColor(Get.context!, (c) => c.text1Color),
                               ),
                             ),
                             Tab(
@@ -309,8 +310,8 @@ class AllPostView extends StatelessWidget {
                                 AppIcon.tag,
                                 width: AppSize.appSize22,
                                 color: allPostController.selectedTabIndex.value == 3
-                                    ? AppColor.secondaryColor
-                                    : AppColor.text1Color,
+                                    ? themedColor(Get.context!, (c) => c.secondaryColor)
+                                    : themedColor(Get.context!, (c) => c.text1Color),
                               ),
                             ),
                           ],
@@ -343,20 +344,20 @@ class AllPostView extends StatelessWidget {
       children: [
         Text(
           text1,
-          style: const TextStyle(
+          style:  TextStyle(
             fontSize: AppSize.appSize16,
             fontWeight: FontWeight.w600,
             fontFamily: AppFont.appFontSemiBold,
-            color: AppColor.secondaryColor,
+            color: themedColor(Get.context!, (c) => c.secondaryColor),
           ),
         ),
         Text(
           text2,
-          style: const TextStyle(
+          style:  TextStyle(
             fontSize: AppSize.appSize16,
             fontWeight: FontWeight.w400,
             fontFamily: AppFont.appFontRegular,
-            color: AppColor.secondaryColor,
+            color: themedColor(Get.context!, (c) => c.secondaryColor),
           ),
         ),
       ],
@@ -377,11 +378,11 @@ class AllPostView extends StatelessWidget {
           ),
           Text(
             text,
-            style: const TextStyle(
+            style:  TextStyle(
               fontSize: AppSize.appSize12,
               fontWeight: FontWeight.w400,
               fontFamily: AppFont.appFontRegular,
-              color: AppColor.secondaryColor,
+              color: themedColor(Get.context!, (c) => c.secondaryColor),
             ),
           ),
         ],

@@ -9,6 +9,7 @@ import 'package:prime_social_media_flutter_ui_kit/controller/home/all_post_contr
 import '../../../config/app_font.dart';
 import '../../../config/app_icon.dart';
 import '../../../config/app_string.dart';
+import '../../../helpers/theme_helper.dart';
 
 class PostViewDialog extends StatelessWidget {
   final String imageUrl;
@@ -28,7 +29,7 @@ class PostViewDialog extends StatelessWidget {
             height: AppSize.appSize273,
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
-              color: AppColor.cardBackgroundColor,
+              color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
               borderRadius: BorderRadius.circular(AppSize.appSize12),
             ),
             child: Column(
@@ -93,11 +94,11 @@ _photoOptionWidget(String icon, double width, String text, {void Function() ? on
         ),
         Text(
           text,
-          style: const TextStyle(
+          style:  TextStyle(
             fontSize: AppSize.appSize14,
             fontWeight: FontWeight.w600,
             fontFamily: AppFont.appFontSemiBold,
-            color: AppColor.secondaryColor,
+            color: themedColor(Get.context!, (c) => c.secondaryColor),
           ),
         ),
       ],

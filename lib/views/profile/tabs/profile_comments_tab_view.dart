@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_color.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_font.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_image.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
 import '../../../../config/app_icon.dart';
 import '../../../../config/app_size.dart';
+import '../../../helpers/theme_helper.dart';
 
 class ProfileCommentsTabView extends StatelessWidget {
   const ProfileCommentsTabView({Key? key}) : super(key: key);
@@ -28,13 +30,13 @@ class ProfileCommentsTabView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                 Text(
                   AppString.loremString,
                   style: TextStyle(
                     fontSize: AppSize.appSize14,
                     fontWeight: FontWeight.w400,
                     fontFamily: AppFont.appFontRegular,
-                    color: AppColor.secondaryColor,
+                    color: themedColor(Get.context!, (c) => c.secondaryColor),
                   ),
                 ),
                 if(index == 2)...[
@@ -95,11 +97,11 @@ class ProfileCommentsTabView extends StatelessWidget {
           ),
           Text(
             text,
-            style: const TextStyle(
+            style:  TextStyle(
               fontSize: AppSize.appSize14,
               fontWeight: FontWeight.w600,
               fontFamily: AppFont.appFontSemiBold,
-              color: AppColor.secondaryColor,
+              color: themedColor(Get.context!, (c) => c.secondaryColor),
             ),
           ),
         ],
@@ -108,8 +110,8 @@ class ProfileCommentsTabView extends StatelessWidget {
   }
 
   _customDivider() {
-    return const Divider(
-      color: AppColor.lineColor,
+    return  Divider(
+      color: themedColor(Get.context!, (c) => c.lineColor),
       height: AppSize.appSize0,
     );
   }

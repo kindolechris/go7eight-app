@@ -5,6 +5,7 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_image.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_size.dart';
 import 'package:prime_social_media_flutter_ui_kit/routes/app_routes.dart';
 import '../../config/app_string.dart';
+import '../../helpers/theme_helper.dart';
 import '../../widget/app_button.dart';
 
 class WelcomeView extends StatelessWidget {
@@ -14,7 +15,7 @@ class WelcomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         body: _body(context),
       ),
     );
@@ -58,7 +59,7 @@ class WelcomeView extends StatelessWidget {
             child: Center(
               child: AppButton(
                 onPressed: () {
-                  Get.offAllNamed(AppRoutes.bottomBarView);
+                  Get.offAllNamed(AppRoutes.buyerHomeView);
                 },
                 text: AppString.buttonTextGetStarted,
                 backgroundColor: AppColor.primaryColor,

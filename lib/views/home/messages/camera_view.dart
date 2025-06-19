@@ -10,6 +10,7 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_string.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/home/message_camera_controller.dart';
 
 import '../../../config/app_icon.dart';
+import '../../../helpers/theme_helper.dart';
 
 class CameraView extends StatelessWidget {
   CameraView({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class CameraView extends StatelessWidget {
                   child: Obx(() {
                     return messageCameraController.isCameraInitialized.value
                         ? messageCameraController.buildCameraPreview()
-                        : Container(color: AppColor.backgroundColor);
+                        : Container(color: themedColor(Get.context!, (c) => c.backgroundColor));
                   }),
                 ),
                 Padding(
@@ -50,7 +51,7 @@ class CameraView extends StatelessWidget {
           Container(
             height: AppSize.appSize140,
             padding: const EdgeInsets.only(left: AppSize.appSize20, right: AppSize.appSize20, top: AppSize.appSize24),
-            color: AppColor.backgroundColor,
+            color: themedColor(Get.context!, (c) => c.backgroundColor),
             child: Column(
               children: [
                 Row(
@@ -128,17 +129,17 @@ class CameraView extends StatelessWidget {
     );
   }
 
-  final TextStyle _selectedTextStyle = const TextStyle(
+  final TextStyle _selectedTextStyle =  TextStyle(
     fontSize: AppSize.appSize14,
     fontWeight: FontWeight.w600,
     fontFamily: AppFont.appFontRegular,
-    color: AppColor.secondaryColor,
+    color: themedColor(Get.context!, (c) => c.secondaryColor),
   );
 
-  final TextStyle _unselectedTextStyle = const TextStyle(
+  final TextStyle _unselectedTextStyle =  TextStyle(
     fontSize: AppSize.appSize14,
     fontWeight: FontWeight.w400,
     fontFamily: AppFont.appFontRegular,
-    color: AppColor.text1Color,
+    color: themedColor(Get.context!, (c) => c.text1Color),
   );
 }

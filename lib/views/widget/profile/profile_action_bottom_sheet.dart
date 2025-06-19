@@ -7,10 +7,12 @@ import 'package:prime_social_media_flutter_ui_kit/config/app_size.dart';
 import 'package:prime_social_media_flutter_ui_kit/controller/profile/profile_controller.dart';
 import 'package:prime_social_media_flutter_ui_kit/routes/app_routes.dart';
 
+import '../../../helpers/theme_helper.dart';
+
 profileActionBottomSheet(BuildContext context) {
   ProfileController profileController = Get.put(ProfileController());
   return showModalBottomSheet(
-    backgroundColor: AppColor.backgroundColor,
+    backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
     shape: const OutlineInputBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(AppSize.appSize12),
@@ -30,12 +32,12 @@ profileActionBottomSheet(BuildContext context) {
         padding: const EdgeInsets.only(
           top: AppSize.appSize12,
         ),
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(AppSize.appSize12),
             topRight: Radius.circular(AppSize.appSize12),
           ),
-          color: AppColor.backgroundColor,
+          color: themedColor(Get.context!, (c) => c.backgroundColor),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -45,7 +47,7 @@ profileActionBottomSheet(BuildContext context) {
               height: AppSize.appSize2,
               margin: const EdgeInsets.only(bottom: AppSize.appSize20),
               decoration: BoxDecoration(
-                color: AppColor.lineColor,
+                color: themedColor(Get.context!, (c) => c.lineColor),
                 borderRadius: BorderRadius.circular(
                   AppSize.appSize6,
                 ),
@@ -73,7 +75,7 @@ profileActionBottomSheet(BuildContext context) {
                       bottom: AppSize.appSize8, left: AppSize.appSize14, right: AppSize.appSize14,
                     ),
                     decoration: BoxDecoration(
-                      color: profileController.isSelected.value == index ? AppColor.cardBackgroundColor : AppColor.transparentColor,
+                      color: profileController.isSelected.value == index ? themedColor(Get.context!, (c) => c.cardBackgroundColor) : AppColor.transparentColor,
                       borderRadius: BorderRadius.circular(AppSize.appSize12),
                     ),
                     child: Padding(
@@ -82,11 +84,11 @@ profileActionBottomSheet(BuildContext context) {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           profileController.profileActionsList[index],
-                          style: const TextStyle(
+                          style:  TextStyle(
                             fontSize: AppSize.appSize14,
                             fontWeight: FontWeight.w600,
                             fontFamily: AppFont.appFontSemiBold,
-                            color: AppColor.secondaryColor,
+                            color: themedColor(Get.context!, (c) => c.secondaryColor),
                           ),
                         ),
                       ),

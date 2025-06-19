@@ -10,6 +10,7 @@ import '../../../../config/app_icon.dart';
 import '../../../../config/app_image.dart';
 import '../../../../config/app_size.dart';
 import '../../../../config/app_string.dart';
+import '../../../../helpers/theme_helper.dart';
 
 class CallRingingView extends StatelessWidget {
   CallRingingView({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class CallRingingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       body: GestureDetector(
         onTap: () {
           Get.toNamed(AppRoutes.duoCallView);
@@ -47,7 +48,7 @@ class CallRingingView extends StatelessWidget {
                       width: AppSize.appSize100,
                     ),
                   ),
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.only(top: AppSize.appSize24),
                     child: Text(
                       AppString.callingTime,
@@ -55,17 +56,17 @@ class CallRingingView extends StatelessWidget {
                         fontSize: AppSize.appSize16,
                         fontWeight: FontWeight.w600,
                         fontFamily: AppFont.appFontSemiBold,
-                        color: AppColor.secondaryColor,
+                        color: themedColor(Get.context!, (c) => c.secondaryColor),
                       ),
                     ),
                   ),
-                  const Text(
+                   Text(
                     AppString.eleanorPena,
                     style: TextStyle(
                       fontSize: AppSize.appSize20,
                       fontWeight: FontWeight.w600,
                       fontFamily: AppFont.appFontSemiBold,
-                      color: AppColor.secondaryColor,
+                      color: themedColor(Get.context!, (c) => c.secondaryColor),
                     ),
                   ),
                 ],

@@ -12,6 +12,7 @@ import '../../../config/app_font.dart';
 import '../../../config/app_icon.dart';
 import '../../../config/app_size.dart';
 import '../../../config/app_string.dart';
+import '../../../helpers/theme_helper.dart';
 
 class ReelEditView extends StatelessWidget {
   ReelEditView({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class ReelEditView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
         appBar: _appBar(),
         body: _body(),
         bottomNavigationBar: _bottomBar(),
@@ -34,7 +35,7 @@ class ReelEditView extends StatelessWidget {
   //Reel Edit content
   _appBar() {
     return AppBar(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       leading: Padding(
         padding: EdgeInsets.only(
           left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize20,
@@ -68,14 +69,14 @@ class ReelEditView extends StatelessWidget {
               color: AppColor.primaryColor,
               borderRadius: BorderRadius.circular(AppSize.appSize66),
             ),
-            child: const Center(
+            child:  Center(
               child: Text(
                 AppString.buttonTextSave,
                 style: TextStyle(
                   fontSize: AppSize.appSize14,
                   fontWeight: FontWeight.w600,
                   fontFamily: AppFont.appFontSemiBold,
-                  color: AppColor.secondaryColor,
+                  color: themedColor(Get.context!, (c) => c.secondaryColor),
                 ),
               ),
             ),
@@ -96,12 +97,12 @@ class ReelEditView extends StatelessWidget {
               left: AppSize.appSize20, right: AppSize.appSize20,
               top: AppSize.appSize23,
             ),
-            decoration: const BoxDecoration(
+            decoration:  BoxDecoration(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(AppSize.appSize12),
                 bottomRight: Radius.circular(AppSize.appSize12),
               ),
-              color: AppColor.cardBackgroundColor,
+              color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
             ),
             child: Column(
               children: [
@@ -159,7 +160,7 @@ class ReelEditView extends StatelessWidget {
                       margin: const EdgeInsets.only(top: AppSize.appSize30),
                       padding: const EdgeInsets.only(left: AppSize.appSize34),
                       height: AppSize.appSize42,
-                      color: AppColor.cardBackgroundColor,
+                      color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -176,7 +177,7 @@ class ReelEditView extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: AppSize.appSize10),
                       height: AppSize.appSize24,
-                      color: AppColor.cardBackgroundColor,
+                      color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: Container(
@@ -184,14 +185,14 @@ class ReelEditView extends StatelessWidget {
                           padding: const EdgeInsets.only(
                             left: AppSize.appSize8, bottom: AppSize.appSize2,
                           ),
-                          decoration: const BoxDecoration(
-                            color: AppColor.container2Color,
+                          decoration:  BoxDecoration(
+                            color: themedColor(Get.context!, (c) => c.container2Color),
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(AppSize.appSize6),
                               bottomLeft: Radius.circular(AppSize.appSize6),
                             ),
                           ),
-                          child: const Align(
+                          child:  Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               AppString.musicOfMusic,
@@ -199,14 +200,14 @@ class ReelEditView extends StatelessWidget {
                                 fontSize: AppSize.appSize12,
                                 fontWeight: FontWeight.w400,
                                 fontFamily: AppFont.appFontRegular,
-                                color: AppColor.backgroundColor,
+                                color: themedColor(Get.context!, (c) => c.backgroundColor),
                               ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                    const Padding(
+                     Padding(
                       padding: EdgeInsets.only(top: AppSize.appSize16),
                       child: Text(
                         AppString.reelEditTime,
@@ -214,7 +215,7 @@ class ReelEditView extends StatelessWidget {
                           fontSize: AppSize.appSize12,
                           fontWeight: FontWeight.w400,
                           fontFamily: AppFont.appFontRegular,
-                          color: AppColor.text1Color,
+                          color: themedColor(Get.context!, (c) => c.text1Color),
                         ),
                       ),
                     ),
@@ -239,7 +240,7 @@ class ReelEditView extends StatelessWidget {
   _bottomBar() {
     return Container(
       height: AppSize.appSize54,
-      color: AppColor.cardBackgroundColor,
+      color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
@@ -264,7 +265,7 @@ class ReelEditView extends StatelessWidget {
                         Image.asset(
                           reelEditController.reelEditIcon[index],
                           width: AppSize.appSize20,
-                          color: reelEditController.isSelected.value == index ? AppColor.primaryColor : AppColor.secondaryColor,
+                          color: reelEditController.isSelected.value == index ? AppColor.primaryColor : themedColor(Get.context!, (c) => c.secondaryColor),
                         ),
                         Text(
                           reelEditController.reelEditString[index],
@@ -272,7 +273,7 @@ class ReelEditView extends StatelessWidget {
                             fontSize: AppSize.appSize12,
                             fontWeight: FontWeight.w400,
                             fontFamily: AppFont.appFontRegular,
-                            color: reelEditController.isSelected.value == index ? AppColor.primaryColor : AppColor.secondaryColor,
+                            color: reelEditController.isSelected.value == index ? AppColor.primaryColor : themedColor(Get.context!, (c) => c.secondaryColor),
                           ),
                         ),
                       ],

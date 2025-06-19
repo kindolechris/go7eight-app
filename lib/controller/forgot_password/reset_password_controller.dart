@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_color.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_size.dart';
 
+import '../../helpers/theme_helper.dart';
+
 class ResetPasswordController extends GetxController {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
@@ -32,8 +34,8 @@ class ResetPasswordController extends GetxController {
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIosWeb: AppSize.size1,
-      backgroundColor: AppColor.cardBackgroundColor,
-      textColor: AppColor.secondaryColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.cardBackgroundColor),
+      textColor: themedColor(Get.context!, (c) => c.secondaryColor),
       fontSize: AppSize.appSize16,
     );
   }

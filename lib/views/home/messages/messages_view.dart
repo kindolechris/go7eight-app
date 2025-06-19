@@ -11,6 +11,7 @@ import '../../../config/app_font.dart';
 import '../../../config/app_icon.dart';
 import '../../../config/app_size.dart';
 import '../../../config/app_string.dart';
+import '../../../helpers/theme_helper.dart';
 
 class MessagesView extends StatelessWidget {
   MessagesView({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class MessagesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       appBar: _appBar(context),
       body: _body(context),
     );
@@ -30,7 +31,7 @@ class MessagesView extends StatelessWidget {
   //Messages content
   _appBar(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: themedColor(Get.context!, (c) => c.backgroundColor),
       leading: Padding(
         padding: EdgeInsets.only(
           left: languageController.selectedLanguageIndex.value == AppSize.size2 ? AppSize.appSize0 : AppSize.appSize20,
@@ -47,13 +48,13 @@ class MessagesView extends StatelessWidget {
         ),
       ),
       leadingWidth: AppSize.appSize44,
-      title: const Text(
+      title:  Text(
         AppString.messages,
         style: TextStyle(
           fontSize: AppSize.appSize20,
           fontWeight: FontWeight.w600,
           fontFamily: AppFont.appFontSemiBold,
-          color: AppColor.secondaryColor,
+          color: themedColor(Get.context!, (c) => c.secondaryColor),
         ),
       ),
       actions: [
@@ -92,19 +93,19 @@ class MessagesView extends StatelessWidget {
               right: AppSize.appSize14,
             ),
             decoration: BoxDecoration(
-              color: AppColor.cardBackgroundColor,
+              color: themedColor(Get.context!, (c) => c.cardBackgroundColor),
               borderRadius: BorderRadius.circular(AppSize.appSize12),
-              border: Border.all(color: AppColor.borderColor, width: AppSize.appSizePoint7),
+              border: Border.all(color: themedColor(Get.context!, (c) => c.borderColor), width: AppSize.appSizePoint7),
             ),
             child: Center(
               child: TextFormField(
                 controller: messagesController.searchFieldController,
-                cursorColor: AppColor.secondaryColor,
-                style: const TextStyle(
+                cursorColor: themedColor(Get.context!, (c) => c.secondaryColor),
+                style:  TextStyle(
                   fontSize: AppSize.appSize14,
                   fontWeight: FontWeight.w400,
                   fontFamily: AppFont.appFontSemiBold,
-                  color: AppColor.secondaryColor,
+                  color: themedColor(Get.context!, (c) => c.secondaryColor),
                 ),
                 textAlignVertical: TextAlignVertical.center,
                 textInputAction: TextInputAction.done,
@@ -112,11 +113,11 @@ class MessagesView extends StatelessWidget {
                   contentPadding: EdgeInsets.zero,
                   isDense: true,
                   hintText: AppString.search,
-                  hintStyle: const TextStyle(
+                  hintStyle:  TextStyle(
                     fontSize: AppSize.appSize14,
                     fontWeight: FontWeight.w400,
                     fontFamily: AppFont.appFontRegular,
-                    color: AppColor.text1Color,
+                    color: themedColor(Get.context!, (c) => c.text1Color),
                   ),
                   border: const UnderlineInputBorder(
                     borderSide: BorderSide.none,
@@ -181,7 +182,7 @@ class MessagesView extends StatelessWidget {
       onTap: () => messagesController.selectTab(index),
       child: Container(
         decoration: BoxDecoration(
-          color: isSelected ? AppColor.secondaryColor : AppColor.cardBackgroundColor,
+          color: isSelected ? themedColor(Get.context!, (c) => c.secondaryColor) : themedColor(Get.context!, (c) => c.cardBackgroundColor),
           borderRadius: BorderRadius.circular(AppSize.appSize6),
         ),
         child: Center(
@@ -191,7 +192,7 @@ class MessagesView extends StatelessWidget {
               fontSize: AppSize.appSize14,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
               fontFamily: isSelected ? AppFont.appFontSemiBold : AppFont.appFontRegular,
-              color: isSelected ? AppColor.backgroundColor : AppColor.secondaryColor,
+              color: isSelected ? themedColor(Get.context!, (c) => c.backgroundColor) : themedColor(Get.context!, (c) => c.secondaryColor),
             ),
           ),
         ),
@@ -224,11 +225,11 @@ class MessagesView extends StatelessWidget {
             ),
             title: Text(
               messagesController.messageProfileNamesList[index],
-              style: const TextStyle(
+              style:  TextStyle(
                 fontSize: AppSize.appSize14,
                 fontWeight: FontWeight.w600,
                 fontFamily: AppFont.appFontSemiBold,
-                color: AppColor.secondaryColor,
+                color: themedColor(Get.context!, (c) => c.secondaryColor),
               ),
             ),
             subtitle: Row(
@@ -239,7 +240,7 @@ class MessagesView extends StatelessWidget {
                     fontSize: AppSize.appSize14,
                     fontWeight: (index == 0 || index == 1 || index == 2) ? FontWeight.w600 : FontWeight.w400,
                     fontFamily: (index == 0 || index == 1 || index == 2) ? AppFont.appFontSemiBold : AppFont.appFontRegular,
-                    color: (index == 0 || index == 1 || index == 2) ? AppColor.secondaryColor : AppColor.text2Color,
+                    color: (index == 0 || index == 1 || index == 2) ? themedColor(Get.context!, (c) => c.secondaryColor) : themedColor(Get.context!, (c) => c.text2Color),
                   ),
                 ),
                 if(index == 0 || index == 1 || index == 2 || index == 3 || index == 4)...[
@@ -247,8 +248,8 @@ class MessagesView extends StatelessWidget {
                     width: AppSize.appSize4,
                     height: AppSize.appSize4,
                     margin: const EdgeInsets.only(left: AppSize.appSize8, right: AppSize.appSize8, top: AppSize.appSize6),
-                    decoration: const BoxDecoration(
-                      color: AppColor.text2Color,
+                    decoration:  BoxDecoration(
+                      color: themedColor(Get.context!, (c) => c.text2Color),
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -256,11 +257,11 @@ class MessagesView extends StatelessWidget {
                     padding: const EdgeInsets.only(top: AppSize.appSize3),
                     child: Text(
                       messagesController.messageTimingsList[index],
-                      style: const TextStyle(
+                      style:  TextStyle(
                         fontSize: AppSize.appSize14,
                         fontWeight: FontWeight.w400,
                         fontFamily: AppFont.appFontRegular,
-                        color: AppColor.text2Color,
+                        color: themedColor(Get.context!, (c) => c.text2Color),
                       ),
                     ),
                   ),
@@ -304,11 +305,11 @@ class MessagesView extends StatelessWidget {
             ),
             title: Text(
               messagesController.messageProfileNamesList[index],
-              style: const TextStyle(
+              style:  TextStyle(
                 fontSize: AppSize.appSize14,
                 fontWeight: FontWeight.w600,
                 fontFamily: AppFont.appFontSemiBold,
-                color: AppColor.secondaryColor,
+                color: themedColor(Get.context!, (c) => c.secondaryColor),
               ),
             ),
             subtitle: Row(
@@ -319,7 +320,7 @@ class MessagesView extends StatelessWidget {
                     fontSize: AppSize.appSize14,
                     fontWeight: (index == 0 || index == 1 || index == 2) ? FontWeight.w600 : FontWeight.w400,
                     fontFamily: (index == 0 || index == 1 || index == 2) ? AppFont.appFontSemiBold : AppFont.appFontRegular,
-                    color: (index == 0 || index == 1 || index == 2) ? AppColor.secondaryColor : AppColor.text2Color,
+                    color: (index == 0 || index == 1 || index == 2) ? themedColor(Get.context!, (c) => c.secondaryColor) : themedColor(Get.context!, (c) => c.text2Color),
                   ),
                 ),
                 if(index == 0 || index == 1 || index == 2 || index == 3 || index == 4)...[
@@ -327,8 +328,8 @@ class MessagesView extends StatelessWidget {
                     width: AppSize.appSize4,
                     height: AppSize.appSize4,
                     margin: const EdgeInsets.only(left: AppSize.appSize8, right: AppSize.appSize8, top: AppSize.appSize6),
-                    decoration: const BoxDecoration(
-                      color: AppColor.text2Color,
+                    decoration:  BoxDecoration(
+                      color: themedColor(Get.context!, (c) => c.text2Color),
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -336,11 +337,11 @@ class MessagesView extends StatelessWidget {
                     padding: const EdgeInsets.only(top: AppSize.appSize3),
                     child: Text(
                       messagesController.messageTimingsList[index],
-                      style: const TextStyle(
+                      style:  TextStyle(
                         fontSize: AppSize.appSize14,
                         fontWeight: FontWeight.w400,
                         fontFamily: AppFont.appFontRegular,
-                        color: AppColor.text2Color,
+                        color: themedColor(Get.context!, (c) => c.text2Color),
                       ),
                     ),
                   ),

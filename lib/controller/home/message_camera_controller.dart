@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:prime_social_media_flutter_ui_kit/config/app_color.dart';
 
+import '../../helpers/theme_helper.dart';
+
 enum CaptureMode { photo, video }
 
 class MessageCameraController extends GetxController {
@@ -135,10 +137,10 @@ class MessageCameraController extends GetxController {
 
   Widget buildCameraPreview() {
     if (isSwapping.value) {
-      return Container(color: AppColor.backgroundColor);
+      return Container(color: themedColor(Get.context!, (c) => c.backgroundColor));
     } else {
       return Obx(() {
-        return isCameraInitialized.value ? CameraPreview(_controller!) : Container(color: AppColor.backgroundColor);
+        return isCameraInitialized.value ? CameraPreview(_controller!) : Container(color: themedColor(Get.context!, (c) => c.backgroundColor));
       });
     }
   }
